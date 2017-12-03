@@ -9,3 +9,4 @@ My aim is to provide clean and readable, yet idiomatic, solutions in both langua
 Task | Python solution | Nim solution
 --- | --- | ---
 [Day 1: Inverse Captcha](http://adventofcode.com/2017/day/1) | [day01.py](python/day01.py) | [day01.nim](nim/day01.nim)
+[Day 2: Corruption Checksum](Day 2: Corruption Checksum) | [day02.py](python/day02.py) | [day02.nim](nim/day02.nim)
