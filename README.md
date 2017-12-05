@@ -11,3 +11,4 @@ Task | Python solution | Nim solution
 [Day 1: Inverse Captcha](http://adventofcode.com/2017/day/1) | [day01.py](python/day01.py) | [day01.nim](nim/day01.nim)
 [Day 2: Corruption Checksum](http://adventofcode.com/2017/day/2) | [day02.py](python/day02.py) | [day02.nim](nim/day02.nim)
 [Day 3: Spiral Memory](http://adventofcode.com/2017/day/3) | [day03.py](python/day03.py) | [day03.nim](nim/day03.nim)
+[Day 4: High-Entropy Passphrases](http://adventofcode.com/2017/day/4) | [day04.py](python/day04.py) | [day04.nim](nim/day04.nim)
