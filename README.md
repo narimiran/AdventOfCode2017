@@ -14,3 +14,4 @@ Task | Python solution | Nim solution
 [Day 4: High-Entropy Passphrases](http://adventofcode.com/2017/day/4) | [day04.py](python/day04.py) | [day04.nim](nim/day04.nim)
 [Day 5: A Maze of Twisty Trampolines, All Alike](http://adventofcode.com/2017/day/5) | [day05.py](python/day05.py) | [day05.nim](nim/day05.nim)
 [Day 6: Memory Reallocation](http://adventofcode.com/2017/day/6) | [day06.py](python/day06.py) | [day06.nim](nim/day06.nim)
+[Day 7: Recursive Circus](http://adventofcode.com/2017/day/7) | [day07.py](python/day07.py) | [day07.nim](nim/day07.nim)
