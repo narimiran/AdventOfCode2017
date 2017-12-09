@@ -15,3 +15,4 @@ Task | Python solution | Nim solution
 [Day 5: A Maze of Twisty Trampolines, All Alike](http://adventofcode.com/2017/day/5) | [day05.py](python/day05.py) | [day05.nim](nim/day05.nim)
 [Day 6: Memory Reallocation](http://adventofcode.com/2017/day/6) | [day06.py](python/day06.py) | [day06.nim](nim/day06.nim)
 [Day 7: Recursive Circus](http://adventofcode.com/2017/day/7) | [day07.py](python/day07.py) | [day07.nim](nim/day07.nim)
+[Day 8: I Heard You Like Registers](http://adventofcode.com/2017/day/8) | [day08.py](python/day08.py) | [day08.nim](nim/day08.nim)
