@@ -18,3 +18,4 @@ Task | Python solution | Nim solution
 [Day 8: I Heard You Like Registers](http://adventofcode.com/2017/day/8) | [day08.py](python/day08.py) | [day08.nim](nim/day08.nim)
 [Day 9: Stream Processing](http://adventofcode.com/2017/day/9) | [day09.py](python/day09.py) | [day09.nim](nim/day09.nim)
 [Day 10: Knot Hash](http://adventofcode.com/2017/day/10) | [day10.py](python/day10.py) | [day10.nim](nim/day10.nim)
+[Day 11: Hex Ed](http://adventofcode.com/2017/day/11) | [day11.py](python/day11.py) | [day11.nim](nim/day11.nim)
