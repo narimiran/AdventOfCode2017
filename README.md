@@ -19,3 +19,5 @@ Task | Python solution | Nim solution
 [Day 9: Stream Processing](http://adventofcode.com/2017/day/9) | [day09.py](python/day09.py) | [day09.nim](nim/day09.nim)
 [Day 10: Knot Hash](http://adventofcode.com/2017/day/10) | [day10.py](python/day10.py) | [day10.nim](nim/day10.nim)
 [Day 11: Hex Ed](http://adventofcode.com/2017/day/11) | [day11.py](python/day11.py) | [day11.nim](nim/day11.nim)
+[Day 12: Digital Plumber](http://adventofcode.com/2017/day/12) | [day12.py](python/day12.py) | [day12.nim](nim/day12.nim)
+
