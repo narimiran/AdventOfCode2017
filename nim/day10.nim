@@ -1,22 +1,13 @@
 import future, strutils, sequtils, algorithm
 
-const
-  inputString = readFile("./inputs/10.txt")
-  size = 256
-let
-  intSizes = lc[parseInt(n) | (n <- inputString.split(',')), int]
-  toAdd = @[17, 31, 73, 47, 23]
-  asciiSizes = lc[ord(c) | (c <- inputString), int].concat(toAdd)
-  numbers = lc[i | (i <- 0 ..< size), int]
 
-
-proc knotHashing(circle, sizes: seq[int], secondPart = false): seq[int] =
-  result = circle
-  let iterations = if secondPart: 64 else: 1
+proc knotLogic(sizes: seq[int], iterations = 64): seq[int] =
+  const size = 256
+  result = lc[i | (i <- 0 ..< size), int]
   var
     pos: int
     skip: int
-  for _ in 1 .. iterations:
+  for i in 1 .. iterations:
     for groupSize in sizes:
       var knot: seq[int] = @[]
       for position in pos ..< pos+groupSize:
@@ -26,23 +17,31 @@ proc knotHashing(circle, sizes: seq[int], secondPart = false): seq[int] =
         result[(pos+i) mod size] = knot[i]
       pos = (pos + groupSize + skip) mod size
       inc skip
-  
-let firstHash = knotHashing(numbers, intSizes)
-echo(firstHash[0] * firstHash[1])
 
 
+proc knotHashing*(word: string): string =
+  result = ""
+  const
+    size = 256
+    blockSize = 16
+    toAdd = @[17, 31, 73, 47, 23]
+  let
+    asciiSizes = lc[ord(c) | (c <- word), int].concat(toAdd)
+    numbers = knotLogic(asciiSizes)
+  for bl in countup(0, size-1, blockSize):
+    var hashed: int
+    let group = numbers[bl ..< bl+blockSize]
+    for n in group:
+      hashed = hashed.xor(n)
+    result.add(hashed.toHex(2).toLowerAscii())
 
-let secondHash = knotHashing(numbers, asciiSizes, secondPart=true)
-const blockSize = 16
-var dense: seq[int] = @[]
+when isMainModule:
+  let
+    inputString = readFile("./inputs/10.txt")
+    intSizes = lc[parseInt(n) | (n <- inputString.split(',')), int]
+    firstHash = knotLogic(intSizes, 1)
+    first = firstHash[0] * firstHash[1]
+    second = knotHashing(inputString)
 
-for bl in countup(0, size-1, blockSize):
-  var hashed: int
-  let group = secondHash[bl ..< bl+blockSize]
-  for n in group:
-    hashed = hashed.xor(n)
-  dense.add(hashed)
-
-var second = ""
-for n in dense: second.add(toHex(n, 2).toLowerAscii())
-echo second
+  echo first
+  echo second
