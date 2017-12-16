@@ -21,3 +21,5 @@ Task | Python solution | Nim solution
 [Day 11: Hex Ed](http://adventofcode.com/2017/day/11) | [day11.py](python/day11.py) | [day11.nim](nim/day11.nim)
 [Day 12: Digital Plumber](http://adventofcode.com/2017/day/12) | [day12.py](python/day12.py) | [day12.nim](nim/day12.nim)
 [Day 13: Packet Scanners](http://adventofcode.com/2017/day/13) | [day13.py](python/day13.py) | [day13.nim](nim/day13.nim)
+[Day 14: Disk Defragmentation](http://adventofcode.com/2017/day/14) | [day14.py](python/day14.py) | [day14.nim](nim/day14.nim)
+[Day 15: Dueling Generators](http://adventofcode.com/2017/day/15) | [day15.py](python/day15.py) | [day15.nim](nim/day15.nim)
