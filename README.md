@@ -23,3 +23,4 @@ Task | Python solution | Nim solution
 [Day 13: Packet Scanners](http://adventofcode.com/2017/day/13) | [day13.py](python/day13.py) | [day13.nim](nim/day13.nim)
 [Day 14: Disk Defragmentation](http://adventofcode.com/2017/day/14) | [day14.py](python/day14.py) | [day14.nim](nim/day14.nim)
 [Day 15: Dueling Generators](http://adventofcode.com/2017/day/15) | [day15.py](python/day15.py) | [day15.nim](nim/day15.nim)
+[Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16) | [day16.py](python/day16.py) | [day16.nim](nim/day16.nim)
