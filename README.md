@@ -24,3 +24,4 @@ Task | Python solution | Nim solution | Note
 [Day 14: Disk Defragmentation](http://adventofcode.com/2017/day/14) | [day14.py](python/day14.py) | [day14.nim](nim/day14.nim)
 [Day 15: Dueling Generators](http://adventofcode.com/2017/day/15) | [day15.py](python/day15.py) | [day15.nim](nim/day15.nim) | Python: generator `generator` generating generator's values.
 [Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16) | [day16.py](python/day16.py) | [day16.nim](nim/day16.nim)
+[Day 17: Spinlock](http://adventofcode.com/2017/day/17) | [day17.py](python/day17.py) | [day17.nim](nim/day17.nim) | Brute force in Python, using `deque.rotate`. The expected version in Nim.
