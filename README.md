@@ -26,3 +26,4 @@ Task | Python solution | Nim solution | Note
 [Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16) | [day16.py](python/day16.py) | [day16.nim](nim/day16.nim)
 [Day 17: Spinlock](http://adventofcode.com/2017/day/17) | [day17.py](python/day17.py) | [day17.nim](nim/day17.nim) | Brute force in Python, using `deque.rotate`. The expected version in Nim.
 [Day 18: Duet](http://adventofcode.com/2017/day/18) | [day18.py](python/day18.py) | [day18.nim](nim/day18.nim)
+[Day 19: A Series of Tubes](http://adventofcode.com/2017/day/19) | [day19.py](python/day19.py) | [day19.nim](nim/day19.nim)
