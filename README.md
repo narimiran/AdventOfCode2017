@@ -28,3 +28,5 @@ Task | Python solution | Nim solution | Note
 [Day 18: Duet](http://adventofcode.com/2017/day/18) | [day18.py](python/day18.py) | [day18.nim](nim/day18.nim)
 [Day 19: A Series of Tubes](http://adventofcode.com/2017/day/19) | [day19.py](python/day19.py) | [day19.nim](nim/day19.nim) | Both solutions use complex numbers, which are great for the rotations in 2D plane.
 [Day 20: Particle Swarm](http://adventofcode.com/2017/day/20) | [day20.py](python/day20.py) | [day20.nim](nim/day20.nim) 
+[Day 21: Fractal Art](http://adventofcode.com/2017/day/21) | - | - 
+[Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22) | [day22.py](python/day22.py) | [day22.nim](nim/day22.nim) | Python version uses complex plane, Nim version uses a regular 2D plane with `enum` for the rotating directions.
