@@ -32,3 +32,4 @@ Task | Python solution | Nim solution | Note
 [Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22) | [day22.py](python/day22.py) | [day22.nim](nim/day22.nim) | Python version uses complex plane, Nim version uses a regular 2D plane with `enum` for the rotating directions.
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23) | [day23.py](python/day23.py) | [day23.nim](nim/day23.nim)
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24) | [day24.py](python/day24.py) | [day24.nim](nim/day24.nim) | BFS in Python, a recursive search in Nim.
+[Day 25: The Halting Problem](http://adventofcode.com/2017/day/25) | [day25.py](python/day25.py) | [day25.nim](nim/day25.nim) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
