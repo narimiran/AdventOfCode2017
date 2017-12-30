@@ -20,7 +20,7 @@ Task | Python solution | Nim solution | Note
 [Day 10: Knot Hash](http://adventofcode.com/2017/day/10) | [day10.py](python/day10.py) | [day10.nim](nim/day10.nim) | Changed solutions to be reusable for Day 14. Python version uses `deque` with pop, rotate, and insert. Nim version is a more 'traditional' one. 
 [Day 11: Hex Ed](http://adventofcode.com/2017/day/11) | [day11.py](python/day11.py) | [day11.nim](nim/day11.nim) | Python version uses cube coordinates, Nim version uses axial coordinates.
 [Day 12: Digital Plumber](http://adventofcode.com/2017/day/12) | [day12.py](python/day12.py) | [day12.nim](nim/day12.nim) | BFS in Python, DFS in Nim.
-[Day 13: Packet Scanners](http://adventofcode.com/2017/day/13) | [day13.py](python/day13.py) | [day13.nim](nim/day13.nim)
+[Day 13: Packet Scanners](http://adventofcode.com/2017/day/13) | [day13.py](python/day13.py) | [day13.nim](nim/day13.nim) | Python version precalculates possible values of `delay` using [Chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem) to gain ~70x speedup.
 [Day 14: Disk Defragmentation](http://adventofcode.com/2017/day/14) | [day14.py](python/day14.py) | [day14.nim](nim/day14.nim)
 [Day 15: Dueling Generators](http://adventofcode.com/2017/day/15) | [day15.py](python/day15.py) | [day15.nim](nim/day15.nim) | Python: generator `generator` generating generator's values.
 [Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16) | [day16.py](python/day16.py) | [day16.nim](nim/day16.nim)
@@ -33,3 +33,42 @@ Task | Python solution | Nim solution | Note
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23) | [day23.py](python/day23.py) | [day23.nim](nim/day23.nim)
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24) | [day24.py](python/day24.py) | [day24.nim](nim/day24.nim) | BFS in Python, a recursive search in Nim.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25) | [day25.py](python/day25.py) | [day25.nim](nim/day25.nim) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
+**Total time**: | 36.0 sec* | 3.7 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
+
+&nbsp;
+
+## Run times
+
+Python version: 3.6.4  
+Nim version: 0.17.2  
+CPU: Intel i7-970 @ 3.20 GHz
+
+Day | Python | Nim
+--- | --- | ---
+1 | 0:00.07 | 0:00.00
+2 | 0:00.05 | 0:00.00
+3 | 0:00.04 | 0:00.00
+4 | 0:00.06 | 0:00.00
+5 | 0:06.26 | 0:00.07
+6 | 0:00.11 | 0:00.01
+7 | 0:00.09 | 0:00.00
+8 | 0:00.05 | 0:00.00
+9 | 0:00.05 | 0:00.00
+10 | 0:00.06 | 0:00.00
+11 | 0:00.07 | 0:00.00
+12 | 0:00.06 | 0:00.03
+13 | 0:00.06 | 0:00.20
+14 | 0:01.24 | 0:00.14
+15 | 0:05.24** | 0:00.82
+16 | 0:00.68 | 0:00.16
+17 | - | 0:00.74
+18 | 0:00.26 | 0:00.09
+19 | 0:00.10 | 0:00.00
+20 | 0:04.32 | 0:00.15
+21 | 0:01.43 | 0:00.21
+22 | 0:06.97 | 0:00.69
+23 | 0:00.05 | 0:00.00
+24 | 0:02.82 | 0:00.23
+25 | 0:07.39 | 0:00.07
+
+** pypy3 (CPython runs ~10x slower)
