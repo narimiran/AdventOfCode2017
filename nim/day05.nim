@@ -1,22 +1,25 @@
-import sequtils, strutils
+import strutils
 
-const originalInstructions = readFile("./inputs/05.txt").splitLines.map(parseInt)
+const input = readFile("./inputs/05.txt").splitLines
+type Instructions = array[input.len, int]
+var instructions: Instructions
+for i, line in input: instructions[i] = line.parseInt
 
 
-proc stepByStep(originalInstructions: seq[int], secondPart = false): uint =
+proc stepByStep(originalInstructions: Instructions, secondPart = false): uint =
   var
     instructions = originalInstructions
     line: int
-  while line < len(instructions):
+  while line < instructions.len:
     let jump = instructions[line]
-    if secondPart and jump >= 3: instructions[line] -= 1
-    else: instructions[line] += 1
+    if secondPart and jump >= 3: dec instructions[line]
+    else: inc instructions[line]
     line += jump
-    result += 1
+    inc result
 
 
-let first = stepByStep(originalInstructions)
-let second = stepByStep(originalInstructions, secondPart=true)
+let first = instructions.stepByStep()
+let second = instructions.stepByStep(secondPart=true)
 
 echo first
 echo second
