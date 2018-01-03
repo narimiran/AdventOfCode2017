@@ -29,11 +29,11 @@ Task | Python solution | Nim solution | Note
 [Day 19: A Series of Tubes](http://adventofcode.com/2017/day/19) | [day19.py](python/day19.py) | [day19.nim](nim/day19.nim) | Both solutions use complex numbers, which are great for the rotations in 2D plane.
 [Day 20: Particle Swarm](http://adventofcode.com/2017/day/20) | [day20.py](python/day20.py) | [day20.nim](nim/day20.nim) 
 [Day 21: Fractal Art](http://adventofcode.com/2017/day/21) | [day21.py](python/day21.py) | [day21.nim](nim/day21.nim) | Both solutions are optimized for the second part. Python version uses `numpy`.
-[Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22) | [day22.py](python/day22.py) | [day22.nim](nim/day22.nim) | Python version uses complex plane, Nim version uses a regular 2D plane with `enum` for the rotating directions.
+[Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22) | [day22.py](python/day22.py) | [day22.nim](nim/day22.nim) | Python version uses a dict and a complex plane, Nim version uses an array (faster than a table) of a regular 2D plane with `enum` for the rotating directions.
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23) | [day23.py](python/day23.py) | [day23.nim](nim/day23.nim)
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24) | [day24.py](python/day24.py) | [day24.nim](nim/day24.nim) | BFS in Python, a recursive search in Nim.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25) | [day25.py](python/day25.py) | [day25.nim](nim/day25.nim) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
-**Total time**: | 36.0 sec* | 3.7 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
+**Total time**: | 36.0 sec* | 3.2 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
 
 &nbsp;
 
@@ -66,7 +66,7 @@ Day | Python | Nim
 19 | 0:00.10 | 0:00.00
 20 | 0:04.32 | 0:00.15
 21 | 0:01.43 | 0:00.21
-22 | 0:06.97 | 0:00.69
+22 | 0:06.97 | 0:00.20
 23 | 0:00.05 | 0:00.00
 24 | 0:02.82 | 0:00.23
 25 | 0:07.39 | 0:00.07

@@ -9,7 +9,7 @@ type
 
 proc solve(part: int): int =
   var
-    grid = initTable[Point, int]()
+    grid: array[-200 .. 250, array[-200 .. 250, int]] # manually tweaked
     position: Point = (instructions.len div 2, instructions[0].strip.len div 2)
     direction: Point = (-1, 0)
     infected: int
@@ -41,13 +41,14 @@ proc solve(part: int): int =
 
   for i, line in instructions:
     for j, mark in line.strip:
-      grid[(i, j)] = if mark == '.': 0 else: part
+      if mark == '#':
+        grid[i][j] = part
 
   let bursts = if part == 1: 10_000 else: 10_000_000
   for _ in 1 .. bursts:
-    let status = grid.getOrDefault(position)
+    let status = grid[position.x][position.y]
     status.logic
-    grid[position] = (status + 1) mod (2 * part)
+    grid[position.x][position.y] = (status + 1) mod (2 * part)
     position += direction
   return infected
 
