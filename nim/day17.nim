@@ -11,11 +11,17 @@ proc spin(insertions = 2017): int =
   return spinlock[position+1]
 
 proc fakeSpin(insertions = 50_000_000): int =
-  var position: int
-  for i in 1 .. insertions:
-    position = (position + puzzle) mod i + 1
+  var
+    position: int
+    skip: int
+    length = 1
+  while length < insertions:
+    position = (position + puzzle) mod length + 1
     if position == 1:
-      result = i
+      result = length
+    skip = (length - position) div puzzle
+    position += skip * (puzzle + 1)
+    length += skip + 1
 
 
 echo spin()

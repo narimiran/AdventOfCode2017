@@ -24,7 +24,7 @@ Task | Python solution | Nim solution | Note
 [Day 14: Disk Defragmentation](http://adventofcode.com/2017/day/14) | [day14.py](python/day14.py) | [day14.nim](nim/day14.nim)
 [Day 15: Dueling Generators](http://adventofcode.com/2017/day/15) | [day15.py](python/day15.py) | [day15.nim](nim/day15.nim) | Python: generator `generator` generating generator's values.
 [Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16) | [day16.py](python/day16.py) | [day16.nim](nim/day16.nim)
-[Day 17: Spinlock](http://adventofcode.com/2017/day/17) | [day17.py](python/day17.py) | [day17.nim](nim/day17.nim) | Brute force in Python, using `deque.rotate`. The expected version in Nim.
+[Day 17: Spinlock](http://adventofcode.com/2017/day/17) | [day17.py](python/day17.py) | [day17.nim](nim/day17.nim) | Brute force in Python, using `deque.rotate`. The expected version in Nim, optimized.
 [Day 18: Duet](http://adventofcode.com/2017/day/18) | [day18.py](python/day18.py) | [day18.nim](nim/day18.nim)
 [Day 19: A Series of Tubes](http://adventofcode.com/2017/day/19) | [day19.py](python/day19.py) | [day19.nim](nim/day19.nim) | Both solutions use complex numbers, which are great for the rotations in 2D plane.
 [Day 20: Particle Swarm](http://adventofcode.com/2017/day/20) | [day20.py](python/day20.py) | [day20.nim](nim/day20.nim) 
@@ -33,7 +33,7 @@ Task | Python solution | Nim solution | Note
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23) | [day23.py](python/day23.py) | [day23.nim](nim/day23.nim)
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24) | [day24.py](python/day24.py) | [day24.nim](nim/day24.nim) | BFS in Python, a recursive search in Nim.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25) | [day25.py](python/day25.py) | [day25.nim](nim/day25.nim) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
-**Total time**: | 36.0 sec* | 3.2 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
+**Total time**: | 36.0 sec* | 2.3 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
 
 &nbsp;
 
@@ -61,7 +61,7 @@ Day | Python | Nim
 14 | 0:01.24 | 0:00.14
 15 | 0:05.24** | 0:00.82
 16 | 0:00.68 | 0:00.16
-17 | - | 0:00.74
+17 | - | 0:00.00
 18 | 0:00.26 | 0:00.09
 19 | 0:00.10 | 0:00.00
 20 | 0:04.32 | 0:00.15
