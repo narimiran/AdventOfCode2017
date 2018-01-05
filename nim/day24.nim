@@ -1,34 +1,49 @@
-import strutils, sequtils
+import strutils, sequtils, math
 
-const
-  instructions = readFile("./inputs/24.txt").splitLines
-  size = instructions.len
+const instructions = readFile("./inputs/24.txt").splitLines
 var
-  connections: array[size, array[2, int]]
-  visited: array[size, bool]
+  connections = newSeq[array[2, int]]()
   maxScore: int
   longestStrongest = (0, 0)
+  doubles = newSeq[int]()
 
 for i, line in instructions:
   let pins = line.split('/').map(parseInt)
-  connections[i] = [pins[0], pins[1]]
+  if pins[0] != pins[1]: connections.add([pins[0], pins[1]])
+  else: doubles.add(pins[0])
+
+var visited = newSeq[bool](connections.len)
 
 
-proc solve(current, score, lenght: int) =
-  for i, candidate in connections:
+proc calcScore(p: seq[int]) =
+  if p.len == 0: return
+  var
+    path = p
+    last = path[^1]
+  for n in path.deduplicate:
+    if n in doubles: path.add(n)
+  let
+    score = 2 * sum(path) - last
+    lenSc = (path.len, score)
+  maxScore = max(maxScore, score)
+  longestStrongest = max(longestStrongest, lenSc)
+
+
+proc solve(currentNode: int, path: seq[int]) =
+  for i, bridge in connections:
     if not visited[i]:
-      if current in candidate:
-        let new_connection = candidate[1 - candidate.find(current)]
+      let f = bridge.find(currentNode)
+      if f > -1:
+        let
+          newConnection = bridge[1 - f]
+          newPath = path.concat(@[new_connection])
         visited[i] = true
-        solve(new_connection, score+candidate[0]+candidate[1], lenght+1)
+        solve(newConnection, newPath)
         visited[i] = false
-  if score > maxScore:
-    maxScore = score
-  if (lenght, score) > longestStrongest:
-    longestStrongest = (lenght, score)
+  calcScore(path)
 
 
-solve(0, 0, 0)
+solve(0, @[])
 
 echo maxScore
 echo longestStrongest[1]
