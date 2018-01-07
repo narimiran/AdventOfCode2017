@@ -22,7 +22,7 @@ Task | Python solution | Nim solution | Note
 [Day 12: Digital Plumber](http://adventofcode.com/2017/day/12) | [day12.py](python/day12.py) | [day12.nim](nim/day12.nim) | BFS in Python, DFS in Nim.
 [Day 13: Packet Scanners](http://adventofcode.com/2017/day/13) | [day13.py](python/day13.py) | [day13.nim](nim/day13.nim) | Python version precalculates possible values of `delay` using [Chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem) to gain ~70x speedup.
 [Day 14: Disk Defragmentation](http://adventofcode.com/2017/day/14) | [day14.py](python/day14.py) | [day14.nim](nim/day14.nim)
-[Day 15: Dueling Generators](http://adventofcode.com/2017/day/15) | [day15.py](python/day15.py) | [day15.nim](nim/day15.nim) | Python: generator `generator` generating generator's values.
+[Day 15: Dueling Generators](http://adventofcode.com/2017/day/15) | [day15.py](python/day15.py) | [day15.nim](nim/day15.nim) | Python: generator `generator` generating generator's values. In Nim, using bit masking gives great speed boost.
 [Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16) | [day16.py](python/day16.py) | [day16.nim](nim/day16.nim)
 [Day 17: Spinlock](http://adventofcode.com/2017/day/17) | [day17.py](python/day17.py) | [day17.nim](nim/day17.nim) | Brute force in Python, using `deque.rotate`. The expected version in Nim, optimized.
 [Day 18: Duet](http://adventofcode.com/2017/day/18) | [day18.py](python/day18.py) | [day18.nim](nim/day18.nim)
@@ -31,9 +31,9 @@ Task | Python solution | Nim solution | Note
 [Day 21: Fractal Art](http://adventofcode.com/2017/day/21) | [day21.py](python/day21.py) | [day21.nim](nim/day21.nim) | Both solutions are optimized for the second part. Python version uses `numpy`.
 [Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22) | [day22.py](python/day22.py) | [day22.nim](nim/day22.nim) | Python version uses a dict and a complex plane, Nim version uses an array (faster than a table) of a regular 2D plane with `enum` for the rotating directions.
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23) | [day23.py](python/day23.py) | [day23.nim](nim/day23.nim)
-[Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24) | [day24.py](python/day24.py) | [day24.nim](nim/day24.nim) | BFS in Python. A recursive search in Nim, optimized not to include components with the same values (~40% speedup).
+[Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24) | [day24.py](python/day24.py) | [day24.nim](nim/day24.nim) | BFS in Python. A recursive search in Nim, optimized.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25) | [day25.py](python/day25.py) | [day25.nim](nim/day25.nim) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
-**Total time**: | 36.0 sec* | 2.3 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
+**Total time**: | 35.6 sec* | 1.9 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
 
 &nbsp;
 
@@ -45,30 +45,30 @@ CPU: Intel i7-970 @ 3.20 GHz
 
 Day | Python | Nim
 --- | --- | ---
-1 | 0:00.07 | 0:00.00
-2 | 0:00.05 | 0:00.00
-3 | 0:00.04 | 0:00.00
-4 | 0:00.06 | 0:00.00
-5 | 0:06.26 | 0:00.07
-6 | 0:00.11 | 0:00.01
-7 | 0:00.09 | 0:00.00
-8 | 0:00.05 | 0:00.00
-9 | 0:00.05 | 0:00.00
-10 | 0:00.06 | 0:00.00
-11 | 0:00.07 | 0:00.00
+1 | 0:00.06 | 0:00.00
+2 | 0:00.08 | 0:00.00
+3 | 0:00.03 | 0:00.00
+4 | 0:00.06 | 0:00.01
+5 | 0:06.48 | 0:00.07
+6 | 0:00.12 | 0:00.01
+7 | 0:00.08 | 0:00.00
+8 | 0:00.03 | 0:00.00
+9 | 0:00.06 | 0:00.00
+10 | 0:00.09 | 0:00.00
+11 | 0:00.05 | 0:00.00
 12 | 0:00.06 | 0:00.03
-13 | 0:00.06 | 0:00.20
-14 | 0:01.24 | 0:00.14
-15 | 0:05.24** | 0:00.82
-16 | 0:00.68 | 0:00.16
+13 | 0:00.08 | 0:00.17
+14 | 0:01.21 | 0:00.15
+15 | 0:04.89** | 0:00.37
+16 | 0:00.68 | 0:00.14
 17 | - | 0:00.00
-18 | 0:00.26 | 0:00.09
-19 | 0:00.10 | 0:00.00
-20 | 0:04.32 | 0:00.15
-21 | 0:01.43 | 0:00.21
-22 | 0:06.97 | 0:00.20
-23 | 0:00.05 | 0:00.00
-24 | 0:02.82 | 0:00.10
-25 | 0:07.39 | 0:00.07
+18 | 0:00.23 | 0:00.07
+19 | 0:00.08 | 0:00.00
+20 | 0:04.35 | 0:00.17
+21 | 0:00.97 | 0:00.20
+22 | 0:06.87 | 0:00.20
+23 | 0:00.07 | 0:00.00
+24 | 0:02.71 | 0:00.13
+25 | 0:07.05 | 0:00.09
 
 ** pypy3 (CPython runs ~10x slower)

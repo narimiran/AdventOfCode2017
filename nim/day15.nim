@@ -1,32 +1,26 @@
 const
   factorA = 16807
   factorB = 48271
-  divisor = 2147483647
+  divisor = 2147483647 # 2^31 - 1
 
 
-proc generate(value: var int, factor, multi: int): int =
+proc findNext(value: var int, factor, mask: int) =
   while true:
-    value = value * factor mod divisor
-    if value mod multi == 0:
-      return value and 0xFFFF
+    value *= factor
+    while value >= divisor:
+      value = (value and divisor) + value.shr 31
+    if (value and mask) == 0: break
 
-var
-  a = 699
-  b = 124
-  total = 0
+proc solve(limit, multiA, multiB: int): int =
+  var
+    a = 699
+    b = 124
+  for _ in 1 .. limit:
+    a.findNext factorA, multiA-1
+    b.findNext factorB, multiB-1
+    if ((a xor b) and 0xFFFF) == 0:
+      inc result
 
-for _ in 1 .. 40_000_000:
-  if generate(a, factorA, 1) == generate(b, factorB, 1):
-    inc total
-echo total
 
-
-
-a = 699
-b = 124
-total = 0
-
-for _ in 1 .. 5_000_000:
-  if generate(a, factorA, 4) == generate(b, factorB, 8):
-    inc total
-echo total
+echo solve(40_000_000, 1, 1)
+echo solve(5_000_000, 4, 8)
