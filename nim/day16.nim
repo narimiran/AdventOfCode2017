@@ -1,4 +1,4 @@
-import strutils
+import strutils, sequtils
 
 const
   instructions = readFile("./inputs/16.txt").split(',')
@@ -17,9 +17,7 @@ proc dance(dancers: string): string =
         x = rem.split('/')
         a = x[0].parseInt
         b = x[1].parseInt
-        temp = result[a]
-      result[a] = result[b]
-      result[b] = temp
+      swap(result[a], result[b])
     of 'p':
       let
         a = result.find(rem[0])
