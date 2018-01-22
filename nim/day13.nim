@@ -27,8 +27,7 @@ echo calculateSeverity()
 
 
 proc allPass(layers: Firewall, delay: int): bool =
-  all(layers) do (layer: Layer) -> bool:
-    (layer.depth + delay) mod layer.period != 0
+  layers.allIt((it.depth + delay) mod it.period != 0)
 
 var delay = 0
 while not allPass(firewall, delay):
