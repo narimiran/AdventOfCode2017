@@ -23,15 +23,21 @@ proc checkCondition(reg, op: string, value: int): bool =
   of "!=": return regVal != value
 
 
+var
+  words: seq[string]
+  register, instruction: string
+  conditionRegister, conditionOperator: string
+  amount, value: int
+
+
 for line in instructions:
-  let
-    words = line.split()
-    register = words[0]
-    instruction = words[1]
-    amount = words[2].parseInt()
-    conditionRegister = words[^3]
-    conditionOperator = words[^2]
-    value = words[^1].parseInt()
+  words = line.split()
+  register = words[0]
+  instruction = words[1]
+  amount = words[2].parseInt()
+  conditionRegister = words[^3]
+  conditionOperator = words[^2]
+  value = words[^1].parseInt()
   if not registers.hasKey(register): registers[register] = 0
   if not registers.hasKey(conditionRegister): registers[conditionRegister] = 0
 
