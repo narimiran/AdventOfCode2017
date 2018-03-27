@@ -2,37 +2,33 @@ import sets, strutils
 import day10
 
 
-const instructions = "hwlqcszp"
+const instructions = "hwlqcszp-"
 
 type Coordinate = tuple[x, y: int]
-var maze = initSet[Coordinate]()
+var
+  maze = initSet[Coordinate]()
+  binHash: string
 
-for row in 0 .. 127:
-  let
-    word = instructions & "-" & $row
-    hexHash = knotHashing(word)
-  var binHash = ""
-  for n in hexHash:
-    binHash.add(toBin(parseHexInt($n), 4))
-  for i, n in binHash:
-    if n == '1':
-      maze.incl((row, i))
+proc createMaze(maze: var HashSet) =
+  for row in 0 .. 127:
+    let word = instructions & $row
+    binHash = knotHashing(word, binOut = true)
+    for i, n in binHash:
+      if n == '1':
+        maze.incl((row, i))
 
+createMaze(maze)
 echo maze.len
 
 
 const deltas: array[4, Coordinate] = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
-proc dfs(start: Coordinate) =
-  var stack = @[start]
-  maze.excl(start)
-  while stack.len > 0:
-    let coord = stack.pop()
-    for delta in deltas:
-      let candidate = (coord.x + delta.x, coord.y + delta.y)
-      if candidate in maze:
-        stack.add(candidate)
-        maze.excl(candidate)
+proc dfs(coord: Coordinate) =
+  if coord notin maze: return
+  maze.excl(coord)
+  for delta in deltas:
+    let candidate = (coord.x + delta.x, coord.y + delta.y)
+    dfs(candidate)
 
 
 var regions: int
