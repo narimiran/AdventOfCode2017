@@ -33,7 +33,7 @@ Task | Python solution | Nim solution | Note
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23) | [day23.py](python/day23.py) | [day23.nim](nim/day23.nim)
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24) | [day24.py](python/day24.py) | [day24.nim](nim/day24.nim) | BFS in Python. A recursive search in Nim, optimized.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25) | [day25.py](python/day25.py) | [day25.nim](nim/day25.nim) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
-**Total time**: | 35.6 sec* | 1.8 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
+**Total time**: | 35.8 sec* | 1.7 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
 
 &nbsp;
 
@@ -45,29 +45,30 @@ CPU: Intel i7-970 @ 3.20 GHz (Linux 4.9.87)
 
 Day | Python | Nim
 --- | --- | ---
-1 | 0:00.06 | 0:00.00
-2 | 0:00.08 | 0:00.00
-3 | 0:00.03 | 0:00.00
-4 | 0:00.06 | 0:00.00
-5 | 0:06.48 | 0:00.08
-6 | 0:00.12 | 0:00.02
+1 | 0:00.05 | 0:00.00
+2 | 0:00.03 | 0:00.00
+3 | 0:00.05 | 0:00.00
+4 | 0:00.05 | 0:00.00
+5 | 0:06.21 | 0:00.08
+6 | 0:00.11 | 0:00.01
 7 | 0:00.08 | 0:00.00
-8 | 0:00.03 | 0:00.00
+8 | 0:00.06 | 0:00.00
 9 | 0:00.06 | 0:00.00
 10 | 0:00.09 | 0:00.00
-11 | 0:00.05 | 0:00.00
+11 | 0:00.07 | 0:00.00
 12 | 0:00.06 | 0:00.01
-13 | 0:00.08 | 0:00.11
-14 | 0:01.21 | 0:00.02
-15 | 0:04.89** | 0:00.38
-16 | 0:00.68 | 0:00.13
+13 | 0:00.07 | 0:00.11
+14 | 0:01.28 | 0:00.02
+15 | 0:04.93** | 0:00.39
+16 | 0:00.34 | 0:00.05
 17 | - | 0:00.00
-18 | 0:00.23 | 0:00.06
+18 | 0:00.27 | 0:00.09
 19 | 0:00.08 | 0:00.00
-20 | 0:04.35 | 0:00.18
-21 | 0:00.97 | 0:00.17
-22 | 0:06.87 | 0:00.22
-23 | 0:00.07 | 0:00.00
-24 | 0:02.71 | 0:00.14
-25 | 0:07.05 | 0:00.10
+20 | 0:04.24 | 0:00.18
+21 | 0:00.40 | 0:00.17
+22 | 0:07.04 | 0:00.22
+23 | 0:00.05 | 0:00.00
+24 | 0:02.74 | 0:00.14
+25 | 0:07.21 | 0:00.10
+
 ** pypy3 (CPython runs ~10x slower)

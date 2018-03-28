@@ -1,32 +1,61 @@
 import strutils, sequtils
 
+
 const
   instructions = readFile("./inputs/16.txt").split(',')
+  iterations = 1_000_000_000
   programs = "abcdefghijklmnop"
+
+
+type Parsed = object
+  first, pa, pb: char
+  second, xa, xb: int
+
+
+proc parse(instruction: string): Parsed =
+  let
+    first = instruction[0]
+    rest = instruction[1 .. instruction.high]
+  var x: seq[int]
+
+  case first
+    of 's':
+      result = Parsed(first: first, second: rest.parseInt)
+    of 'x':
+      x = rest.split('/').map(parseInt)
+      result = Parsed(first: first, xa: x[0], xb: x[1])
+    of 'p':
+      result = Parsed(first: first, pa: rest[0], pb: rest[^1])
+    else: discard
+
+
+proc cleanUp(instructions: seq[string]): seq[Parsed] =
+  result = @[]
+  for instruction in instructions:
+    result.add(parse(instruction))
+
+
+let cleaned = instructions.cleanUp()
+
 
 proc dance(dancers: string): string =
   result = dancers
-  for instr in instructions:
-    let rem = instr[1 .. instr.high]
-    case instr[0]
+  var a, b: int
+  for element in cleaned:
+    case element.first
     of 's':
-      let rot = rem.parseInt
-      result = result[^rot .. result.high] & result[0 ..< ^rot]
+      result = result[^element.second .. result.high] & result[0 ..< ^element.second]
     of 'x':
-      let
-        x = rem.split('/')
-        a = x[0].parseInt
-        b = x[1].parseInt
-      swap(result[a], result[b])
+      swap(result[element.xa], result[element.xb])
     of 'p':
-      let
-        a = result.find(rem[0])
-        b = result.find(rem[^1])
-      result[a] = rem[^1]
-      result[b] = rem[0]
+      a = result.find(element.pa)
+      b = result.find(element.pb)
+      result[a] = element.pb
+      result[b] = element.pa
     else: discard
 
-proc longDance(dancers: string, iterations = 1_000_000_000): string =
+
+proc longDance(dancers: string): string =
   var
     dancers = dancers
     seen = @[dancers]
@@ -37,5 +66,5 @@ proc longDance(dancers: string, iterations = 1_000_000_000): string =
     seen.add(dancers)
 
 
-echo dance(programs)
-echo longDance(programs)
+echo programs.dance()
+echo programs.longDance()
