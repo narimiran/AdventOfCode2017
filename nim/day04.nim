@@ -1,23 +1,20 @@
-import strutils, sets, future, algorithm
+import strutils, sets, algorithm, sequtils
 
 const passphrases = readFile("./inputs/04.txt").splitLines()
-
-var
-  first: int
-  second: int
 
 proc areOnlyDistinct(containter: seq[string]): bool =
   len(containter) == len(containter.toSet())
 
 proc letterSort(word: string): string =
-  let letters = lc[c | (c <- word), char]
-  return sorted(letters, cmp).join()
+  sorted(word, cmp).join()
 
+var
+  first, second: int
+  words, anagrams: seq[string]
 
 for line in passphrases:
-  let
-    words = line.split()
-    anagrams = lc[letterSort(word) | (word <- words), string]
+  words = line.split()
+  anagrams = words.map(letterSort)
   if words.areOnlyDistinct(): inc first
   if anagrams.areOnlyDistinct(): inc second
 
