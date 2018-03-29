@@ -1,18 +1,21 @@
 import strutils, sequtils, tables, math, sets
 
+
 const instructions = readFile("./inputs/20.txt").splitLines
 type
-  Coord = tuple[x, y, z: int]
+  Coord = tuple[x, y, z: float]
   Particle = tuple[p, v, a: Coord]
 
 proc extractNumbers(s: string): Coord =
-  let xyz = s[3 .. ^2].split(',').map(parseInt)
+  let xyz = s[3 .. ^2].split(',').map(parseFloat)
   result = (xyz[0], xyz[1], xyz[2])
 
-proc manhattan(accel: Coord): int = abs(accel.x) + abs(accel.y) + abs(accel.z)
+proc manhattan(accel: Coord): float =
+  abs(accel.x) + abs(accel.y) + abs(accel.z)
+
 var
-  particles: seq[Particle] = @[]
-  smallestAcceleration = int.high
+  particles: array[instructions.len, Particle]
+  smallestAcceleration = float.high
   closestParticle: int
 
 for i, line in instructions:
@@ -25,7 +28,7 @@ for i, line in instructions:
   if ma < smallestAcceleration:
     smallestAcceleration = ma
     closestParticle = i
-  particles.add((p, v, a))
+  particles[i] = (p, v, a)
 
 echo closestParticle
 
@@ -36,39 +39,38 @@ proc `-`(c1, c2: Coord): Coord = (c1.x - c2.x, c1.y - c2.y, c1.z - c2.z)
 proc `-`(p1, p2: Particle): Particle = (p1.p - p2.p, p1.v - p2.v, p1.a - p2.a)
 
 proc checkCollision(p, v, a: Coord, time: float): bool =
-  proc collision(pp, vv, aa: int): bool =
-    0.5*float(aa)*time^2 + (float(vv) + 0.5*float(aa))*time + float(pp) == 0
+  proc collision(pp, vv, aa: float): bool =
+    (2 * vv + aa * (1+time)) * time + 2 * pp == 0
   return collision(p.y, v.y, a.y) and collision(p.z, v.z, a.z)
 
 
-proc findCollisions(p1, p2: Particle): seq[int] =
-  result = @[]
-  var times: seq[float] = @[]
+proc findCollisions(p1, p2: Particle): float =
+  result = float.high
   let
     (p, v, a) = p1 - p2
-    px = float p.x
-    vx = float v.x
-    ax = float a.x
-    b = vx + ax / 2
-    D = b^2 - 2*ax*px
-  if ax == 0:
-    if vx != 0:
-      times.add(-px/vx)
+    b = - v.x - 0.5 * a.x
+    D = b*b - 2 * a.x * p.x
+  if a.x == 0:
+    if v.x != 0:
+      let time = -p.x / v.x
+      if checkCollision(p, v, a, time) and time < result:
+        result = time
   elif D == 0:
-    times.add(-b/ax)
+    let time = b / a.x
+    if checkCollision(p, v, a, time) and time < result:
+      result = time
   else:
-    times.add((-b - D.sqrt) / ax)
-    times.add((-b + D.sqrt) / ax)
-  for time in times:
-    if checkCollision(p, v, a, time):
-      result.add(int(time))
+    for time in [(b - D.sqrt) / a.x, (b + D.sqrt) / a.x]:
+      if checkCollision(p, v, a, time) and time < result:
+        result = time
 
 
 var collisions = initTable[int, seq[tuple[i, j: int]]]()
 
 for i, p1 in particles:
   for j, p2 in particles[i+1 .. particles.high]:
-    for time in findCollisions(p1, p2):
+    let time = findCollisions(p1, p2).int
+    if time > 0 and time < int.high:
       if not collisions.hasKey(time):
         collisions[time] = @[]
       collisions[time].add((i, i+j+1))
