@@ -1,57 +1,74 @@
-import strutils, tables
-
-const instructions = readFile("./inputs/22.txt").splitLines
+import strutils
 
 type
   Point = tuple[x, y: int]
   Rotation = enum left, right, back
 
+const
+  instructions = readFile("./inputs/22.txt").splitLines
+  startingPosition: Point = (instructions.len div 2, instructions[0].strip.len div 2)
+  startingDirection: Point = (-1, 0)
 
-proc solve(part: int): int =
-  var
-    grid: array[-200 .. 250, array[-200 .. 250, int]] # manually tweaked
-    position: Point = (instructions.len div 2, instructions[0].strip.len div 2)
-    direction: Point = (-1, 0)
-    infected: int
+var
+  grid1: array[-20 .. 40, array[-50 .. 40, int]]      # manually tweaked
+  grid2: array[-180 .. 220, array[-180 .. 220, int]]  # manually tweaked
 
-  proc `+=`(a: var Point, b: Point) =
-    a = (a.x + b.x, a.y + b.y)
+for i, line in instructions:
+  for j, mark in line.strip:
+    if mark == '#':
+      grid1[i][j] = 1
+      grid2[i][j] = 2
 
-  proc turn(rot: Rotation) =
-    let (x, y) = direction
-    case rot
+
+template `+=`(a: var Point, b: Point) =
+  a = (a.x + b.x, a.y + b.y)
+
+
+proc turn(direction: var Point, rot: Rotation) =
+  let (x, y) = direction
+  case rot
     of left:  direction = (-y,  x)
     of right: direction = ( y, -x)
     of back:  direction = (-x, -y)
 
-  proc logic(status: int) =
-    if part == 1:
-      if status == 0:
-        inc infected
-        turn left
-      else:
-        turn right
+
+proc part1(): int =
+  var
+    direction = startingDirection
+    position = startingPosition
+
+  template visit(status: var int) =
+    if status == 0:
+      inc result
+      direction.turn left
+      status = 1
     else:
-      case status
-      of 0: turn left
-      of 1: inc infected
-      of 2: turn right
-      of 3: turn back
-      else: discard
+      direction.turn right
+      status = 0
 
-  for i, line in instructions:
-    for j, mark in line.strip:
-      if mark == '#':
-        grid[i][j] = part
-
-  let bursts = if part == 1: 10_000 else: 10_000_000
-  for _ in 1 .. bursts:
-    let status = grid[position.x][position.y]
-    status.logic
-    grid[position.x][position.y] = (status + 1) mod (2 * part)
+  for _ in 1 .. 10_000:
+    visit grid1[position.x][position.y]
     position += direction
-  return infected
 
 
-echo solve 1
-echo solve 2
+proc part2(): int =
+  var
+    direction = startingDirection
+    position = startingPosition
+
+  template visit(status: var int) =
+    case status
+      of 0: direction.turn left
+      of 1: inc result
+      of 2: direction.turn right
+      of 3: direction.turn back; status = -1
+      else: discard
+    inc status
+
+  for _ in 1 .. 10_000_000:
+    visit grid2[position.x][position.y]
+    position += direction
+
+
+echo part1()
+echo part2()
