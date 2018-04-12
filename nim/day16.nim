@@ -1,4 +1,4 @@
-import strutils, sequtils
+import strutils, sequtils, algorithm
 
 
 const
@@ -44,7 +44,7 @@ proc dance(dancers: string): string =
   for element in cleaned:
     case element.first
     of 's':
-      result = result[^element.second .. result.high] & result[0 ..< ^element.second]
+      discard result.rotateLeft(-element.second)
     of 'x':
       swap(result[element.xa], result[element.xb])
     of 'p':

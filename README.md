@@ -33,7 +33,7 @@ Task | Python solution | Nim solution | Note
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23) | [day23.py](python/day23.py) | [day23.nim](nim/day23.nim)
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24) | [day24.py](python/day24.py) | [day24.nim](nim/day24.nim) | BFS in Python. A recursive search in Nim, optimized.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25) | [day25.py](python/day25.py) | [day25.nim](nim/day25.nim) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
-**Total time**: | 35.5 sec* | 1.1 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
+**Total time**: | 35.5 sec* | 0.97 sec | * without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
 
 &nbsp;
 
@@ -58,17 +58,17 @@ Day | Python | Nim
 11 | 0:00.07 | 0:00.00
 12 | 0:00.06 | 0:00.01
 13 | 0:00.07 | 0:00.00
-14 | 0:01.22 | 0:00.02
-15 | 0:04.91** | 0:00.38
-16 | 0:00.35 | 0:00.05
+14 | 0:01.22 | 0:00.03
+15 | 0:04.91** | 0:00.36
+16 | 0:00.35 | 0:00.02
 17 | - | 0:00.00
 18 | 0:00.25 | 0:00.00
 19 | 0:00.08 | 0:00.00
 20 | 0:03.75 | 0:00.11
 21 | 0:00.39 | 0:00.00
-22 | 0:06.97 | 0:00.14
+22 | 0:06.97 | 0:00.09
 23 | 0:00.05 | 0:00.00
-24 | 0:02.74 | 0:00.03
+24 | 0:02.74 | 0:00.01
 25 | 0:07.38 | 0:00.10
 
 ** pypy3 (CPython runs ~10x slower)
