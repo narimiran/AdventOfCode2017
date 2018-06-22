@@ -1,9 +1,7 @@
-proc readDigits(f: string): seq[int] =
-  for i in readFile(f):
-    result.add(int(i) - int('0'))
+import sequtils
 
 const
-  digits = readDigits("./inputs/01.txt")
+  digits = readFile("./inputs/01.txt").mapIt(int(it) - int('0'))
   size = digits.len
 
 
