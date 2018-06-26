@@ -1,10 +1,10 @@
-import sets, strutils
-import day10
+import sets, day10
 
-
-const instructions = "hwlqcszp-"
 
 type Coordinate = tuple[x, y: int]
+const
+  instructions = "hwlqcszp-"
+  deltas: array[4, Coordinate] = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 var
   maze = initSet[Coordinate]()
   binHash: string
@@ -20,8 +20,6 @@ proc createMaze(maze: var HashSet) =
 createMaze(maze)
 echo maze.len
 
-
-const deltas: array[4, Coordinate] = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 
 proc dfs(coord: Coordinate) =
   if coord notin maze: return
