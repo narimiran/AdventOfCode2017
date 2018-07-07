@@ -3,15 +3,14 @@ import strutils, tables, math
 const instructions = readFile("./inputs/23.txt").splitLines
 
 
-proc solve(part: int): int =
+func solve(part: int): int =
   var
     reg = initTable[string, int]()
     i = 0
   reg["a"] = part - 1
 
-  proc interpret(s: string): int =
-    if s.isAlphaAscii: return reg.getOrDefault(s)
-    else: return parseInt s
+  func interpret(s: string): int =
+    if s.isAlphaAscii: reg.getOrDefault(s) else: s.parseInt
 
   while i < 11:
     let
@@ -33,7 +32,7 @@ proc solve(part: int): int =
   else:
     var nonprimes = (reg["c"] - reg["b"]) div 34 + 1
     for b in countup(reg["b"]+17, reg["c"], 34):
-      for d in countup(3, int(sqrt(float(b))), 2):
+      for d in countup(3, sqrt(b.float).int, 2):
         if b mod d == 0:
           inc nonprimes
           break

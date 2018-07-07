@@ -24,7 +24,7 @@ template `+=`(a: var Point, b: Point) =
   a = (a.x + b.x, a.y + b.y)
 
 
-proc turn(direction: var Point, rot: Rotation) =
+func turn(direction: var Point, rot: Rotation) =
   let (x, y) = direction
   case rot
     of left:  direction = (-y,  x)

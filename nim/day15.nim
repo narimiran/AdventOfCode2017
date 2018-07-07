@@ -4,14 +4,14 @@ const
   divisor = 2147483647 # 2^31 - 1
 
 
-proc findNext(value: var int, factor, mask: int) =
+func findNext(value: var int, factor, mask: int) =
   while true:
     value *= factor
     while value >= divisor:
       value = (value and divisor) + value.shr 31
     if (value and mask) == 0: break
 
-proc solve(limit, multiA, multiB: int): int =
+func solve(limit, multiA, multiB: int): int =
   var
     a = 699
     b = 124

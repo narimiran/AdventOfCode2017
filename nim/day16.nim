@@ -12,7 +12,7 @@ type Parsed = object
   second, xa, xb: int
 
 
-proc parse(instruction: string): Parsed =
+func parse(instruction: string): Parsed =
   let
     first = instruction[0]
     rest = instruction[1 .. instruction.high]
@@ -29,11 +29,9 @@ proc parse(instruction: string): Parsed =
     else: discard
 
 
-proc cleanUp(instructions: seq[string]): seq[Parsed] =
-  result = @[]
+func cleanUp(instructions: seq[string]): seq[Parsed] =
   for instruction in instructions:
     result.add(parse(instruction))
-
 
 let cleaned = instructions.cleanUp()
 

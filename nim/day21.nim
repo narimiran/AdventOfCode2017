@@ -1,14 +1,12 @@
 import strutils, tables, sequtils
 
 const instructions = readFile("./inputs/21.txt").splitLines
-
 type Grid = seq[seq[bool]]
 
 
-proc flip(s: var Grid) =
-  swap(s[0], s[^1])
+func flip(s: var Grid) = swap(s[0], s[^1])
 
-proc transpose(s: var Grid) =
+func transpose(s: var Grid) =
   for i in 0 .. s.high:
     for j in i+1 .. s.high:
       swap(s[j][i], s[i][j])
@@ -18,13 +16,13 @@ iterator transform(s: var Grid): Grid =
     yield s; s.transpose
     yield s; s.flip
 
-proc toBool(s:string): seq[bool] =
+func toBool(s:string): seq[bool] =
   result = newSeq[bool](s.len)
   for i, c in s:
     result[i] = c == '#'
 
 
-proc parseInput(): Table[Grid, Grid] =
+func parseInput(): Table[Grid, Grid] =
   result = initTable[Grid, Grid]()
   var
     divided: seq[string]
@@ -42,8 +40,7 @@ const
   mappings = parseInput()
 
 
-
-proc getSquare(grid: Grid, i, j, by: int): Grid =
+func getSquare(grid: Grid, i, j, by: int): Grid =
   result = newSeqWith(by, newSeq[bool](by))
   var row = 0
   for x in i ..< i+by:
@@ -51,7 +48,7 @@ proc getSquare(grid: Grid, i, j, by: int): Grid =
     inc row
 
 
-proc findNext(grid: Grid): Grid =
+func findNext(grid: Grid): Grid =
   let
     size = grid.len
     by = if size mod 2 == 0: 2 else: 3
@@ -69,7 +66,7 @@ proc findNext(grid: Grid): Grid =
           result[i*(by+1) + x][j*(by+1) + y] = c
 
 
-proc forward3steps(pattern: Grid): CountTable[Grid] =
+func forward3steps(pattern: Grid): CountTable[Grid] =
   result = initCountTable[Grid]()
   var
     pattern = pattern
@@ -82,13 +79,13 @@ proc forward3steps(pattern: Grid): CountTable[Grid] =
       result.inc(square)
 
 
-proc pixelsOn(grid: Grid): int =
+func pixelsOn(grid: Grid): int =
   for r in grid:
     for c in r:
       if c: inc result
 
 
-proc fastCount(grid: Grid, steps: int): int =
+func fastCount(grid: Grid, steps: int): int =
   var
     blockCounts = initCountTable[Grid]()
     mappingCounts = initTable[Grid, CountTable[Grid]]()
@@ -105,8 +102,6 @@ proc fastCount(grid: Grid, steps: int): int =
 
   for pattern, count in blockCounts.pairs:
     result += pattern.pixelsOn * count
-
-
 
 
 var first = startingGrid

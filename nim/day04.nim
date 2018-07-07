@@ -2,10 +2,10 @@ import strutils, sets, algorithm, sequtils
 
 const passphrases = readFile("./inputs/04.txt").splitLines()
 
-proc areOnlyDistinct(containter: seq[string]): bool =
+func areOnlyDistinct(containter: seq[string]): bool =
   len(containter) == len(containter.toSet())
 
-proc letterSort(word: string): string =
+func letterSort(word: string): string =
   sorted(word, cmp).join()
 
 var

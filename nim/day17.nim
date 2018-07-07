@@ -1,7 +1,7 @@
 const puzzle = 394
 
 
-proc spin(insertions = 2017): int =
+func spin(insertions = 2017): int =
   var
     spinlock = @[0]
     position: int
@@ -10,7 +10,7 @@ proc spin(insertions = 2017): int =
     spinlock.insert(i, position)
   return spinlock[position+1]
 
-proc fakeSpin(insertions = 50_000_000): int =
+func fakeSpin(insertions = 50_000_000): int =
   var
     position: int
     skip: int

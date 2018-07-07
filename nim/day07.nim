@@ -28,7 +28,7 @@ for r in (allNodes - allKids): root = r
 echo root
 
 
-proc findCorrectWeight(weights: seq[int]): int =
+func findCorrectWeight(weights: seq[int]): int =
   var counts = initCountTable[int]()
   for weight in weights: counts.inc(weight)
   return counts.largest.key
