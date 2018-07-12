@@ -1,4 +1,4 @@
-import strutils, sequtils, tables, math, sets
+import strutils, sequtils, tables, math
 
 
 const instructions = readFile("./inputs/20.txt").splitLines
@@ -6,11 +6,11 @@ type
   Coord = tuple[x, y, z: float]
   Particle = tuple[p, v, a: Coord]
 
-proc extractNumbers(s: string): Coord =
+func extractNumbers(s: string): Coord =
   let xyz = s[3 .. ^2].split(',').map(parseFloat)
   result = (xyz[0], xyz[1], xyz[2])
 
-proc manhattan(accel: Coord): float =
+func manhattan(accel: Coord): float =
   abs(accel.x) + abs(accel.y) + abs(accel.z)
 
 var
@@ -35,16 +35,16 @@ echo closestParticle
 
 
 
-proc `-`(c1, c2: Coord): Coord = (c1.x - c2.x, c1.y - c2.y, c1.z - c2.z)
-proc `-`(p1, p2: Particle): Particle = (p1.p - p2.p, p1.v - p2.v, p1.a - p2.a)
+func `-`(c1, c2: Coord): Coord = (c1.x - c2.x, c1.y - c2.y, c1.z - c2.z)
+func `-`(p1, p2: Particle): Particle = (p1.p - p2.p, p1.v - p2.v, p1.a - p2.a)
 
-proc checkCollision(p, v, a: Coord, time: float): bool =
-  proc collision(pp, vv, aa: float): bool =
+func checkCollision(p, v, a: Coord, time: float): bool =
+  func collision(pp, vv, aa: float): bool =
     (2 * vv + aa * (1+time)) * time + 2 * pp == 0
   return collision(p.y, v.y, a.y) and collision(p.z, v.z, a.z)
 
 
-proc findCollisions(p1, p2: Particle): float =
+func findCollisions(p1, p2: Particle): float =
   result = float.high
   let
     (p, v, a) = p1 - p2
@@ -65,7 +65,7 @@ proc findCollisions(p1, p2: Particle): float =
         result = time
 
 
-var collisions = initTable[int, seq[tuple[i, j: int]]]()
+var collisions = initTable[int, seq[tuple[i, j: int16]]]()
 
 for i, p1 in particles:
   for j, p2 in particles[i+1 .. particles.high]:
@@ -73,15 +73,15 @@ for i, p1 in particles:
     if time > 0 and time < int.high:
       if not collisions.hasKey(time):
         collisions[time] = @[]
-      collisions[time].add((i, i+j+1))
+      collisions[time].add((i.int16, (i+j+1).int16))
 
-var dead = initSet[int]()
+var dead: set[int16] = {}
 for time in collisions.keys:
-  var colliding = initSet[int]()
+  var colliding: set[int16] = {}
   for collision in collisions[time]:
     if collision.i notin dead and collision.j notin dead:
       colliding.incl(collision.i)
       colliding.incl(collision.j)
   dead = dead + colliding
 
-echo instructions.len - dead.len
+echo instructions.len - dead.card
