@@ -1,42 +1,34 @@
-import strutils, sequtils, tables, sets
+import strutils, sequtils, tables
 
-const
-  instructions = readFile("./inputs/12.txt").splitLines()
-  start = 0
-var
-  graph = initTable[int, seq[int]]()
-  seen = initSet[int]()
-  groups: int
-  nodes: seq[string]
-  pipe: int
-  neighbours: seq[int]
+const instructions = readFile("./inputs/12.txt").splitLines()
 
+func createGraph(): Table[uint16, seq[uint16]] =
+  result = initTable[uint16, seq[uint16]]()
+  for line in instructions:
+    let
+      nodes = line.split(" <-> ")
+      pipe = nodes[0].parseUInt().uint16
+    result[pipe] = nodes[1].split(", ").mapIt(it.parseUInt().uint16)
 
-for line in instructions:
-  nodes = line.split(" <-> ")
-  pipe = nodes[0].parseInt()
-  neighbours = nodes[1].split(", ").map(parseInt)
-  graph[pipe] = neighbours
+let graph = createGraph()
 
 
-proc dfs(startingPoint: int): HashSet[int] =
-  result = initSet[int]()
-  var
-    stack = @[startingPoint]
-    current: int
+proc dfs(startingPoint: uint16): set[uint16] =
+  var stack = @[startingPoint]
   while stack.len > 0:
-    current = stack.pop()
+    let current = stack.pop()
     result.incl(current)
     for node in graph[current]:
       if node notin result:
         stack.add(node)
 
-func `+=`(a: var HashSet, b: HashSet) = a = a + b
+func `+=`(a: var set[uint16], b: set[uint16]) = a = a + b
 
 
-let firstIsland = dfs(start)
-echo card(firstIsland)
-
+let firstIsland = dfs(0)
+var
+  groups: uint8
+  seen: set[uint16]
 seen += firstIsland
 inc groups
 
@@ -45,5 +37,6 @@ for pipe in graph.keys:
     seen += dfs(pipe)
     inc groups
 
+echo firstIsland.card
 echo groups
 
