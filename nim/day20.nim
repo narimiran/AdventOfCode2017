@@ -70,7 +70,7 @@ var collisions = initTable[int, seq[tuple[i, j: int16]]]()
 for i, p1 in particles:
   for j, p2 in particles[i+1 .. particles.high]:
     let time = findCollisions(p1, p2).int
-    if time > 0 and time < int.high:
+    if time > 0:
       if not collisions.hasKey(time):
         collisions[time] = @[]
       collisions[time].add((i.int16, (i+j+1).int16))
