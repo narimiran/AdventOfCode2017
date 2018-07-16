@@ -43,31 +43,30 @@ def check_collision(ppp, vvv, aaa, t):
 
 def find_collisions(x, y):
     ppp, vvv, aaa = get_differences(x, y)
-    soonest_collision = 98765
     p, v, a = ppp[0], vvv[0], aaa[0]
     b = -v - 0.5 * a
     D = b*b - 2 * a * p
     if a == 0:
         if v != 0:
             t = -p/v
-            if check_collision(ppp, vvv, aaa, t) and t < soonest_collision:
-                soonest_collision = t
+            if check_collision(ppp, vvv, aaa, t):
+                return t
     elif D == 0:
         t = b/a
-        if check_collision(ppp, vvv, aaa, t) and t < soonest_collision:
-            soonest_collision = t
+        if check_collision(ppp, vvv, aaa, t):
+            return t
     else:
         for t in ((b - D**0.5)/a, (b + D**0.5)/a):
-            if check_collision(ppp, vvv, aaa, t) and t < soonest_collision:
-                soonest_collision = t
-    return int(soonest_collision)
+            if check_collision(ppp, vvv, aaa, t):
+                return t
+    return 0
 
 
 collisions = defaultdict(set)
 for i, p1 in enumerate(particles):
     for j, p2 in enumerate(particles[i+1:], i+1):
         time = find_collisions(p1, p2)
-        if time < 98765:
+        if time > 0:
             collisions[time].add((i, j))
 
 alive = set(range(len(particles)))
