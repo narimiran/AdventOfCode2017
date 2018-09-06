@@ -52,8 +52,8 @@ func findAllowedDelay(height: int, depths: HashSet[int]): tuple[delay, period: i
   for i in countup(0, period-1, 2): potential.incl(i)
   for depth in depths: forbidden.incl(-depth mod period + period)
 
-  let allowed = potential - forbidden
-  for d in allowed: result = (d, period); break
+  var allowed = potential - forbidden
+  result = (allowed.pop(), period)
 
 
 func findDelayParams(walls: Groups): tuple[delay, step: int] =

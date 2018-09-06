@@ -22,16 +22,16 @@ echo maze.len
 
 
 proc dfs(coord: Coordinate) =
-  if coord notin maze: return
-  maze.excl(coord)
   for delta in deltas:
     let candidate = (coord.x + delta.x, coord.y + delta.y)
-    dfs(candidate)
+    if candidate in maze:
+      maze.excl(candidate)
+      dfs(candidate)
 
 
 var regions: int
 while maze.len > 0:
-  for coord in maze: dfs(coord); break # Nim doesn't have HashSet.pop()
+  dfs(maze.pop())
   inc regions
 
 echo regions
