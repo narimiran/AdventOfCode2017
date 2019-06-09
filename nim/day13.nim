@@ -1,7 +1,6 @@
 import strutils, sets, tables, sequtils, math
 
 proc makeFirewall(f: string): Table[int, HashSet[int]] =
-  result = initTable[int, HashSet[int]]()
   let instructions = readFile(f).splitLines()
 
   for line in instructions:
@@ -10,7 +9,7 @@ proc makeFirewall(f: string): Table[int, HashSet[int]] =
       depth = numbers[0]
       height = numbers[1]
     if not result.hasKey(height):
-      result[height] = initSet[int]()
+      result[height] = initHashSet[int]()
     result[height].incl(depth)
 
 const firewall = makeFirewall("./inputs/13.txt")
@@ -46,8 +45,8 @@ for h in firewall.keys:
 func findAllowedDelay(height: int, depths: HashSet[int]): tuple[delay, period: int] =
   let period = 2 * (height - 1)
   var
-    potential = initSet[int]()
-    forbidden = initSet[int]()
+    potential = initHashSet[int]()
+    forbidden = initHashSet[int]()
 
   for i in countup(0, period-1, 2): potential.incl(i)
   for depth in depths: forbidden.incl(-depth mod period + period)
@@ -66,15 +65,15 @@ func findDelayParams(walls: Groups): tuple[delay, step: int] =
     periods.add(period)
 
   let commonMulti = periods.foldl(lcm(a, b))
-  var allowedDelays = initSet[int]()
+  var allowedDelays = initHashSet[int]()
   for i in 0 ..< commonMulti: allowedDelays.incl(i)
 
   for dp in zip(delays, periods):
-    var s = initSet[int]()
+    var s = initHashSet[int]()
     for i in countup(0, commonMulti-1, dp.b): s.incl(dp.a + i)
     allowedDelays = allowedDelays * s
 
-  for d in allowedDelays: result = (d, commonMulti); break
+  result = (allowedDelays.pop(), commonMulti)
 
 
 func isCaught(hd: Group, delay: int): bool =

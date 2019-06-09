@@ -1,6 +1,6 @@
 import sugar, strutils, sequtils
 
-const res = lc[i | (i <- 0 .. 255), int]
+const res = toSeq(0..255)
 
 
 func knotLogic(sizes: seq[int], iterations = 64): seq[int] =

@@ -10,7 +10,7 @@ func solve(part: int): int =
   reg["a"] = part - 1
 
   func interpret(s: string): int =
-    if s.isAlphaAscii: reg.getOrDefault(s) else: s.parseInt
+    if s[0].isAlphaAscii: reg.getOrDefault(s) else: s.parseInt
 
   while i < 11:
     let

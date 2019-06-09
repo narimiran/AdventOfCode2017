@@ -5,8 +5,8 @@ let pattern = re"\w+"
 var
   weights = initTable[string, int]()
   children = initTable[string, seq[string]]()
-  allNodes = initSet[string]()
-  allKids = initSet[string]()
+  allNodes = initHashSet[string]()
+  allKids = initHashSet[string]()
 
 for line in instructions:
   let
@@ -39,10 +39,10 @@ proc findOffspringsWeights(node: string): int =
   for kid in children[node]:
     kidsWeights.add(findOffspringsWeights(kid))
 
-  if len(kidsWeights.toSet()) > 1:
+  if len(kidsWeights.toHashSet) > 1:
     let correct = findCorrectWeight(kidsWeights)
     var wrong: int
-    for weight in kidsWeights.toSet():
+    for weight in kidsWeights.toHashSet:
       if weight != correct: wrong = weight
     let
       difference = correct - wrong

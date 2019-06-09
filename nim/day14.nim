@@ -5,19 +5,18 @@ type Coordinate = tuple[x, y: int]
 const
   instructions = "hwlqcszp-"
   deltas: array[4, Coordinate] = [(1, 0), (-1, 0), (0, 1), (0, -1)]
-var
-  maze = initSet[Coordinate]()
-  binHash: string
 
-proc createMaze(maze: var HashSet) =
+
+func createMaze(): HashSet[Coordinate] =
   for row in 0 .. 127:
-    let word = instructions & $row
-    binHash = knotHashing(word, binOut = true)
+    let
+      word = instructions & $row
+      binHash = knotHashing(word, binOut = true)
     for i, n in binHash:
       if n == '1':
-        maze.incl((row, i))
+        result.incl((row, i))
 
-createMaze(maze)
+var maze = createMaze()
 echo maze.len
 
 
