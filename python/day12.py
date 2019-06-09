@@ -24,20 +24,15 @@ def bfs(starting_point):
     return connections
 
 
-islands = []
-seen = set()
-
-first_island = bfs(0)
-print(len(first_island))
-
-
-islands.append(first_island)
-seen |= first_island
+seen = bfs(0)
+islands = 1
+first_island_size = len(seen)
 
 for pipe in graph:
     if pipe not in seen:
         pipe_island = bfs(pipe)
-        islands.append(pipe_island)
+        islands += 1
         seen |= pipe_island
 
-print(len(islands))
+print(first_island_size)
+print(islands)
