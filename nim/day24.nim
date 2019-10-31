@@ -1,4 +1,4 @@
-import strutils, sequtils, math
+import strutils, sequtils
 
 const instructions = readFile("./inputs/24.txt").splitLines
 var

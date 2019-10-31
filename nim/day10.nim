@@ -1,4 +1,4 @@
-import sugar, strutils, sequtils
+import strutils, sequtils
 
 const res = toSeq(0..255)
 

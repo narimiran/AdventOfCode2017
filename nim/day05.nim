@@ -1,4 +1,4 @@
-import strutils, sequtils
+import strutils
 
 const instructions = readFile("./inputs/05.txt").splitLines.map(parseInt)
 
