@@ -31,8 +31,8 @@ def set_value(point):
 def iterate_through_spiral(ring=0):
     while True:
         ring += 1
-        for y in range(-ring + 1, ring): yield set_value((ring, y))
-        for x in range(ring, -ring, -1): yield set_value((x, ring))
+        for y in range(-ring + 1, ring): yield set_value((ring,  y))
+        for x in range(ring, -ring, -1): yield set_value((x,  ring))
         for y in range(ring, -ring, -1): yield set_value((-ring, y))
         for x in range(-ring, ring + 1): yield set_value((x, -ring))
 

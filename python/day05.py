@@ -9,7 +9,7 @@ def step_by_step(instructions, second_part=False):
     while True:
         try:
             # EAFP (https://docs.python.org/3/glossary.html#term-eafp)
-            # ~25% faster than LBYL (repeteately checking if inside of bounds)
+            # a bit faster than LBYL (repeteately checking if inside of bounds)
             jump = instructions[line]
         except IndexError:
             return steps

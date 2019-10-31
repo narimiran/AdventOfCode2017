@@ -9,12 +9,9 @@ steps = 0
 
 get_char = lambda pos: instructions[int(pos.imag)][int(pos.real)]
 
-def change_direction(old_direction):
-    candidate = old_direction * 1j
-    if get_char(pos + candidate) != ' ':
-        return candidate
-    else:
-        return old_direction * -1j
+def change_direction(direction):
+    candidate = direction * 1j
+    return candidate if get_char(pos + candidate) != ' ' else direction * -1j
 
 
 char = get_char(pos)
