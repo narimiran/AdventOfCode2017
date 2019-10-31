@@ -33,9 +33,9 @@ for line in instructions:
     case l.instr
       of "inc":
         registers.inc(l.reg, l.amount)
-        maximum = max(registers[l.reg], maximum)
       of "dec":
         registers.inc(l.reg, -l.amount)
+    maximum = max(registers[l.reg], maximum)
 
 
 echo registers.largest.val

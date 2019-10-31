@@ -40,7 +40,7 @@ func `-`(c1, c2: Coord): Coord = (c1.x - c2.x, c1.y - c2.y, c1.z - c2.z)
 func `-`(p1, p2: Particle): Particle = (p1.p - p2.p, p1.v - p2.v, p1.a - p2.a)
 
 func collision(pp, vv, aa, time: float): bool =
-    (2 * vv + aa * (1+time)) * time + 2 * pp == 0
+  (2 * vv + aa * (1+time)) * time + 2 * pp == 0
 
 func checkCollision(p, v, a: Coord, time: float): bool =
   collision(p.y, v.y, a.y, time) and collision(p.z, v.z, a.z, time)

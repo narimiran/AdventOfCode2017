@@ -17,9 +17,8 @@ for line in instructions:
   weights[name] = weight
   children[name] = kids
 
-for node in weights.keys:
-  allNodes.incl(node)
 for node in children.keys():
+  allNodes.incl(node)
   for kid in children[node]:
     allKids.incl(kid)
 
