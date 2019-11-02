@@ -17,13 +17,13 @@ My aim is to provide clean and readable, yet idiomatic, solutions in all three l
 If you have any comment/suggestion/advice, please let me know!
 
 Originally, I've solved all tasks in Nim and Python as they were released.
-Ocaml solutions were added in Novemeber 2019 as a preparation for AoC 2019 (these were my first steps in Ocaml).
+OCaml solutions were added in Novemeber 2019 as a preparation for AoC 2019 (these were my first steps in OCaml).
 
 
-Task                                                                                 | Nim solution               | Ocaml solution             | Python solution             | Note
+Task                                                                                 | Nim solution               | OCaml solution             | Python solution             | Note
 ---                                                                                  | ---                        | ---                        | ---                         | ---
 [Day 1: Inverse Captcha](http://adventofcode.com/2017/day/1)                         | [day01.nim](nim/day01.nim) | [day01.ml](ocaml/day01.ml) | [day01.py](python/day01.py) | Taking advantage of Python's negative indices.
-[Day 2: Corruption Checksum](http://adventofcode.com/2017/day/2)                     | [day02.nim](nim/day02.nim) |                            | [day02.py](python/day02.py) |
+[Day 2: Corruption Checksum](http://adventofcode.com/2017/day/2)                     | [day02.nim](nim/day02.nim) | [day02.ml](ocaml/day02.ml) | [day02.py](python/day02.py) |
 [Day 3: Spiral Memory](http://adventofcode.com/2017/day/3)                           | [day03.nim](nim/day03.nim) |                            | [day03.py](python/day03.py) | Building a spiral with dict and iterators, in both versions.
 [Day 4: High-Entropy Passphrases](http://adventofcode.com/2017/day/4)                | [day04.nim](nim/day04.nim) |                            | [day04.py](python/day04.py) |
 [Day 5: A Maze of Twisty Trampolines, All Alike](http://adventofcode.com/2017/day/5) | [day05.nim](nim/day05.nim) |                            | [day05.py](python/day05.py) | Used `try-except` in Python for some nice speed improvement.
@@ -56,7 +56,7 @@ Task                                                                            
 ## Run times
 
 * Nim version: 1.0.0
-* Ocaml version: 4.08.1+flambda
+* OCaml version: 4.08.1+flambda
 * Python version: 3.7.4
 * CPU: Intel i7-970 @ 3.20 GHz (Linux 4.19)
 
