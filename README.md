@@ -29,7 +29,7 @@ Task                                                                            
 [Day 5: A Maze of Twisty Trampolines, All Alike](http://adventofcode.com/2017/day/5) | [day05.nim](nim/day05.nim) | [day05.ml](ocaml/day05.ml) | [day05.py](python/day05.py) | Used `try-except` in Python for some nice speed improvement.
 [Day 6: Memory Reallocation](http://adventofcode.com/2017/day/6)                     | [day06.nim](nim/day06.nim) | [day06.ml](ocaml/day06.ml) | [day06.py](python/day06.py) | Python doesn't have `OrderedSet` (had to use `OrderedDict`).
 [Day 7: Recursive Circus](http://adventofcode.com/2017/day/7)                        | [day07.nim](nim/day07.nim) | [day07.ml](ocaml/day07.ml) | [day07.py](python/day07.py) | Python's `Counter.most_common()` is quite helpful/useful here.
-[Day 8: I Heard You Like Registers](http://adventofcode.com/2017/day/8)              | [day08.nim](nim/day08.nim) |                            | [day08.py](python/day08.py) |
+[Day 8: I Heard You Like Registers](http://adventofcode.com/2017/day/8)              | [day08.nim](nim/day08.nim) | [day08.ml](ocaml/day07.ml) | [day08.py](python/day08.py) |
 [Day 9: Stream Processing](http://adventofcode.com/2017/day/9)                       | [day09.nim](nim/day09.nim) |                            | [day09.py](python/day09.py) |
 [Day 10: Knot Hash](http://adventofcode.com/2017/day/10)                             | [day10.nim](nim/day10.nim) |                            | [day10.py](python/day10.py) | Changed solutions to be reusable for Day 14. Python version uses `deque` with pop, rotate, and insert. Nim version is a more 'traditional' one.
 [Day 11: Hex Ed](http://adventofcode.com/2017/day/11)                                | [day11.nim](nim/day11.nim) |                            | [day11.py](python/day11.py) | Python version uses cube coordinates, Nim version uses axial coordinates.
@@ -63,32 +63,32 @@ Task                                                                            
 
 Times are in milliseconds, the reported results are the average of 20 runs.
 
-day |  nim | python
---- | ---- | ------
- 01 |    1 |     34
- 02 |    1 |     29
- 03 |    1 |     31
- 04 |    5 |     39
- 05 |  139 |   6183
- 06 |    5 |     76
- 07 |    5 |     55
- 08 |    3 |     37
- 09 |    1 |     43
- 10 |    1 |     53
- 11 |    2 |     48
- 12 |    5 |     39
- 13 |    9 |     42
- 14 |   25 |   1032
- 15 |  357 | 4986\*
- 16 |   23 |    292
- 17 |    2 |    0\*
- 18 |    1 |    206
- 19 |    1 |     47
- 20 |   34 |   3477
- 21 |    2 |     26
- 22 |  112 |   6577
- 23 |    2 |     36
- 24 |   34 |   2634
- 25 |   68 |   7292
+day |  nim | ocaml | python
+--- | ---- | ----- | ------
+ 01 |    1 |    58 |     34
+ 02 |    1 |    43 |     29
+ 03 |    1 |    40 |     31
+ 04 |    5 |    45 |     39
+ 05 |  139 |   190 |   6183
+ 06 |    5 |    50 |     76
+ 07 |    5 |    49 |     55
+ 08 |    3 |    42 |     37
+ 09 |    1 |       |     43
+ 10 |    1 |       |     53
+ 11 |    2 |       |     48
+ 12 |    5 |       |     39
+ 13 |    9 |       |     42
+ 14 |   25 |       |   1032
+ 15 |  357 |       |   4986
+ 16 |   23 |       |    292
+ 17 |    2 |       |     28
+ 18 |    1 |       |    206
+ 19 |    1 |       |     47
+ 20 |   34 |       |   3477
+ 21 |    2 |       |     26
+ 22 |  112 |       |   6577
+ 23 |    2 |       |     36
+ 24 |   34 |       |   2634
+ 25 |   68 |       |   7292
 
 \* pypy3 (CPython runs ~10x slower)
