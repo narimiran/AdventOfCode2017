@@ -1,0 +1,3 @@
+(library
+  (name knotHash)
+  (libraries containers))
