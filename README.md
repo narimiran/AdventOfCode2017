@@ -37,7 +37,7 @@ Task                                                                            
 [Day 13: Packet Scanners](http://adventofcode.com/2017/day/13)                       | [day13.nim](nim/day13.nim) | [day13.ml](ocaml/day13.ml) | [day13.py](python/day13.py) | All three versions precalculate possible values of `delay` using [Chinese remainder theorem](https://en.wikipedia.org/wiki/Chinese_remainder_theorem) to gain a significant speedup.
 [Day 14: Disk Defragmentation](http://adventofcode.com/2017/day/14)                  | [day14.nim](nim/day14.nim) | [day14.ml](ocaml/day14.ml) | [day14.py](python/day14.py) |
 [Day 15: Dueling Generators](http://adventofcode.com/2017/day/15)                    | [day15.nim](nim/day15.nim) | [day15.ml](ocaml/day15.ml) | [day15.py](python/day15.py) | Python: generator `generator` generating generator's values. In Nim, using bit masking gives great speed boost.
-[Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16)                 | [day16.nim](nim/day16.nim) |                            | [day16.py](python/day16.py) |
+[Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16)                 | [day16.nim](nim/day16.nim) | [day16.ml](ocaml/day16.ml) | [day16.py](python/day16.py) |
 [Day 17: Spinlock](http://adventofcode.com/2017/day/17)                              | [day17.nim](nim/day17.nim) |                            | [day17.py](python/day17.py) | Brute force in Python, using `deque.rotate`. The expected version in Nim, optimized.
 [Day 18: Duet](http://adventofcode.com/2017/day/18)                                  | [day18.nim](nim/day18.nim) |                            | [day18.py](python/day18.py) |
 [Day 19: A Series of Tubes](http://adventofcode.com/2017/day/19)                     | [day19.nim](nim/day19.nim) |                            | [day19.py](python/day19.py) | Both solutions use complex numbers, which are great for the rotations in 2D plane.
@@ -80,7 +80,7 @@ day |  nim | ocaml | python
  13 |    3 |    41 |     42
  14 |   19 |    80 |   1032
  15 |  349 |   702 |   4986
- 16 |   19 |       |    292
+ 16 |   19 |   139 |    292
  17 |    2 |       |     28
  18 |    2 |       |    206
  19 |    1 |       |     47
