@@ -39,7 +39,7 @@ Task                                                                            
 [Day 15: Dueling Generators](http://adventofcode.com/2017/day/15)                    | [day15.nim](nim/day15.nim) | [day15.ml](ocaml/day15.ml) | [day15.py](python/day15.py) | Python: generator `generator` generating generator's values. In Nim, using bit masking gives great speed boost.
 [Day 16: Permutation Promenade](http://adventofcode.com/2017/day/16)                 | [day16.nim](nim/day16.nim) | [day16.ml](ocaml/day16.ml) | [day16.py](python/day16.py) |
 [Day 17: Spinlock](http://adventofcode.com/2017/day/17)                              | [day17.nim](nim/day17.nim) | [day17.ml](ocaml/day17.ml) | [day17.py](python/day17.py) | Brute force in Python, using `deque.rotate`. The expected version in Nim, optimized.
-[Day 18: Duet](http://adventofcode.com/2017/day/18)                                  | [day18.nim](nim/day18.nim) |                            | [day18.py](python/day18.py) |
+[Day 18: Duet](http://adventofcode.com/2017/day/18)                                  | [day18.nim](nim/day18.nim) | [day18.ml](ocaml/day18.ml) | [day18.py](python/day18.py) |
 [Day 19: A Series of Tubes](http://adventofcode.com/2017/day/19)                     | [day19.nim](nim/day19.nim) |                            | [day19.py](python/day19.py) | Both solutions use complex numbers, which are great for the rotations in 2D plane.
 [Day 20: Particle Swarm](http://adventofcode.com/2017/day/20)                        | [day20.nim](nim/day20.nim) |                            | [day20.py](python/day20.py) |
 [Day 21: Fractal Art](http://adventofcode.com/2017/day/21)                           | [day21.nim](nim/day21.nim) |                            | [day21.py](python/day21.py) | Both solutions are optimized for the second part. Python version uses `numpy` and expands the grid (3 steps at once), Nim version counts the number of times each pattern is present after 18 iterations.
@@ -82,7 +82,7 @@ day |  nim | ocaml | python
  15 |  349 |   702 |   4986
  16 |   19 |   139 |    292
  17 |    2 |    10 |     28
- 18 |    2 |       |    206
+ 18 |    2 |    11 |    206
  19 |    1 |       |     47
  20 |   25 |       |   3477
  21 |    1 |       |     26
