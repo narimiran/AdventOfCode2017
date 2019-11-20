@@ -41,7 +41,7 @@ Task                                                                            
 [Day 17: Spinlock](http://adventofcode.com/2017/day/17)                              | [day17.nim](nim/day17.nim) | [day17.ml](ocaml/day17.ml) | [day17.py](python/day17.py) | Brute force in Python, using `deque.rotate`. The expected version in Nim, optimized.
 [Day 18: Duet](http://adventofcode.com/2017/day/18)                                  | [day18.nim](nim/day18.nim) | [day18.ml](ocaml/day18.ml) | [day18.py](python/day18.py) |
 [Day 19: A Series of Tubes](http://adventofcode.com/2017/day/19)                     | [day19.nim](nim/day19.nim) | [day19.ml](ocaml/day19.ml) | [day19.py](python/day19.py) | All three solutions use complex numbers, which are great for the rotations in 2D plane.
-[Day 20: Particle Swarm](http://adventofcode.com/2017/day/20)                        | [day20.nim](nim/day20.nim) |                            | [day20.py](python/day20.py) |
+[Day 20: Particle Swarm](http://adventofcode.com/2017/day/20)                        | [day20.nim](nim/day20.nim) | [day20.ml](ocaml/day20.ml) | [day20.py](python/day20.py) |
 [Day 21: Fractal Art](http://adventofcode.com/2017/day/21)                           | [day21.nim](nim/day21.nim) |                            | [day21.py](python/day21.py) | Both solutions are optimized for the second part. Python version uses `numpy` and expands the grid (3 steps at once), Nim version counts the number of times each pattern is present after 18 iterations.
 [Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22)                       | [day22.nim](nim/day22.nim) |                            | [day22.py](python/day22.py) | Python version uses a dict and a complex plane, Nim version uses an array (faster than a table) of a regular 2D plane with `enum` for the rotating directions.
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23)             | [day23.nim](nim/day23.nim) |                            | [day23.py](python/day23.py) |
@@ -84,7 +84,7 @@ day |  nim | ocaml | python
  17 |    2 |    10 |     28
  18 |    2 |    11 |    206
  19 |    1 |     4 |     47
- 20 |   25 |       |   3477
+ 20 |   25 |    39 |   3477
  21 |    1 |       |     26
  22 |  110 |       |   6577
  23 |    1 |       |     36
