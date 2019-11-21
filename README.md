@@ -47,7 +47,7 @@ Task                                                                            
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23)             | [day23.nim](nim/day23.nim) |                            | [day23.py](python/day23.py) |
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24)                  | [day24.nim](nim/day24.nim) |                            | [day24.py](python/day24.py) | BFS in Python. A recursive search in Nim, optimized.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25)                   | [day25.nim](nim/day25.nim) |                            | [day25.py](python/day25.py) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
-**Total time**:                                                                      | 0.84 sec                   |                            | 33.3 sec\*                  | \* without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
+**Total time**:                                                                      | 0.49 sec                   |                            | 15.9 sec\*                  | \* without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
 
 &nbsp;
 
@@ -55,40 +55,40 @@ Task                                                                            
 
 ## Run times
 
-* Nim version: 1.0.0
+* Nim version: 1.1.1 (devel)
 * OCaml version: 4.08.1+flambda
 * Python version: 3.7.4
-* CPU: Intel i7-970 @ 3.20 GHz (Linux 4.19)
+* CPU: AMD Ryzen 3700x @ 3.6 GHz (Linux 5.3)
 
 
 Times are in milliseconds, the reported results are the average of 20 runs.
 
-day |  nim | ocaml | python
---- | ---- | ----- | ------
- 01 |    1 |     1 |     34
- 02 |    1 |     1 |     29
- 03 |    1 |     1 |     31
- 04 |    4 |     5 |     39
- 05 |  137 |   154 |   6183
- 06 |    4 |     9 |     76
- 07 |    4 |     8 |     55
- 08 |    2 |     3 |     37
- 09 |    1 |     3 |     43
- 10 |    1 |     3 |     53
- 11 |    1 |     2 |     48
- 12 |    5 |     4 |     39
- 13 |    3 |    41 |     42
- 14 |   19 |    80 |   1032
- 15 |  349 |   702 |   4986
- 16 |   19 |   139 |    292
- 17 |    2 |    10 |     28
- 18 |    2 |    11 |    206
- 19 |    1 |     4 |     47
- 20 |   25 |    39 |   3477
- 21 |    1 |       |     26
- 22 |  110 |       |   6577
- 23 |    1 |       |     36
- 24 |   31 |       |   2634
- 25 |   67 |       |   7292
+day |  nim | ocaml | python |
+---:| ----:| -----:| ------:|
+ 01 |  0.4 |   1.2 |   22.5 |
+ 02 |  0.7 |   1.0 |   22.3 |
+ 03 |  0.5 |   1.0 |   19.1 |
+ 04 |  3.6 |   4.2 |   22.1 |
+ 05 | 85.0 |  86.1 | 2547.6 |
+ 06 |  3.3 |   5.6 |   53.9 |
+ 07 |  3.2 |   6.1 |   33.5 |
+ 08 |  2.0 |   2.1 |   19.6 |
+ 09 |  0.7 |   2.9 |   24.2 |
+ 10 |  0.8 |   2.1 |   33.0 |
+ 11 |  1.3 |   1.8 |   32.6 |
+ 12 |  2.9 |   3.3 |   26.5 |
+ 13 |  1.7 |  30.4 |   28.8 |
+ 14 | 14.3 |  45.6 |  521.6 |
+ 15 |195.4 | 392.6 | 2074.2 |
+ 16 | 13.0 |  82.0 |  160.3 |
+ 17 |  1.6 |   7.8 |      - |
+ 18 |  1.1 |   7.5 |  108.0 |
+ 19 |  0.9 |   1.4 |   33.0 |
+ 20 | 16.1 |  31.2 | 1582.7 |
+ 21 |  0.8 |       |  212.4 |
+ 22 | 61.2 |       | 3511.9 |
+ 23 |  0.8 |       |   21.3 |
+ 24 | 16.4 |       | 1332.3 |
+ 25 | 61.6 |       | 3456.8 |
 
-\* pypy3 (CPython runs ~10x slower)
+Python Day15 was run with `pypy3`, Python Day17 was brute-forced.
