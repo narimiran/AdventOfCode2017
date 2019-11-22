@@ -43,7 +43,7 @@ Task                                                                            
 [Day 19: A Series of Tubes](http://adventofcode.com/2017/day/19)                     | [day19.nim](nim/day19.nim) | [day19.ml](ocaml/day19.ml) | [day19.py](python/day19.py) | All three solutions use complex numbers, which are great for the rotations in 2D plane.
 [Day 20: Particle Swarm](http://adventofcode.com/2017/day/20)                        | [day20.nim](nim/day20.nim) | [day20.ml](ocaml/day20.ml) | [day20.py](python/day20.py) |
 [Day 21: Fractal Art](http://adventofcode.com/2017/day/21)                           | [day21.nim](nim/day21.nim) | [day21.ml](ocaml/day21.ml) | [day21.py](python/day21.py) | Unoptimized solution in OCaml. Nim and Python solutions are optimized for the second part. Python version uses `numpy` and expands the grid (3 steps at once), Nim version counts the number of times each pattern is present after 18 iterations.
-[Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22)                       | [day22.nim](nim/day22.nim) |                            | [day22.py](python/day22.py) | Python version uses a dict and a complex plane, Nim version uses an array (faster than a table) of a regular 2D plane with `enum` for the rotating directions.
+[Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22)                       | [day22.nim](nim/day22.nim) | [day22.ml](ocaml/day22.ml) | [day22.py](python/day22.py) | OCaml: sum types and pattern matching is the name of the game. Python version uses a dict and a complex plane, Nim version uses an array (faster than a table) of a regular 2D plane with `enum` for the rotating directions.
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23)             | [day23.nim](nim/day23.nim) |                            | [day23.py](python/day23.py) |
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24)                  | [day24.nim](nim/day24.nim) |                            | [day24.py](python/day24.py) | BFS in Python. A recursive search in Nim, optimized.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25)                   | [day25.nim](nim/day25.nim) |                            | [day25.py](python/day25.py) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
@@ -86,7 +86,7 @@ day |  nim | ocaml | python |
  19 |  0.9 |   1.4 |   33.0 |
  20 | 16.1 |  31.2 | 1582.7 |
  21 |  0.8 | 151.0 |  212.4 |
- 22 | 61.2 |       | 3511.9 |
+ 22 | 61.2 | 150.8 | 3511.9 |
  23 |  0.8 |       |   21.3 |
  24 | 16.4 |       | 1332.3 |
  25 | 61.6 |       | 3456.8 |
