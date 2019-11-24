@@ -45,7 +45,7 @@ Task                                                                            
 [Day 21: Fractal Art](http://adventofcode.com/2017/day/21)                           | [day21.nim](nim/day21.nim) | [day21.ml](ocaml/day21.ml) | [day21.py](python/day21.py) | Unoptimized solution in OCaml. Nim and Python solutions are optimized for the second part. Python version uses `numpy` and expands the grid (3 steps at once), Nim version counts the number of times each pattern is present after 18 iterations.
 [Day 22: Sporifica Virus](http://adventofcode.com/2017/day/22)                       | [day22.nim](nim/day22.nim) | [day22.ml](ocaml/day22.ml) | [day22.py](python/day22.py) | OCaml: sum types and pattern matching is the name of the game. Python version uses a dict and a complex plane, Nim version uses an array (faster than a table) of a regular 2D plane with `enum` for the rotating directions.
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23)             | [day23.nim](nim/day23.nim) | [day23.ml](ocaml/day23.ml) | [day23.py](python/day23.py) |
-[Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24)                  | [day24.nim](nim/day24.nim) |                            | [day24.py](python/day24.py) | BFS in Python. A recursive search in Nim, optimized.
+[Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24)                  | [day24.nim](nim/day24.nim) | [day24.ml](ocaml/day24.ml) | [day24.py](python/day24.py) | BFS in Python. A recursive search in Nim and OCaml, optimized.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25)                   | [day25.nim](nim/day25.nim) |                            | [day25.py](python/day25.py) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
 **Total time**:                                                                      | 0.49 sec                   |                            | 15.9 sec\*                  | \* without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
 
@@ -88,7 +88,7 @@ day |  nim | ocaml | python |
  21 |  0.8 | 151.0 |  212.4 |
  22 | 61.2 | 150.8 | 3511.9 |
  23 |  0.8 |   1.0 |   21.3 |
- 24 | 16.4 |       | 1332.3 |
+ 24 | 16.4 |  68.5 | 1332.3 |
  25 | 61.6 |       | 3456.8 |
 
 Python Day15 was run with `pypy3`, Python Day17 was brute-forced.
