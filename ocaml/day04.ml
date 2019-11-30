@@ -1,6 +1,6 @@
 module Strset = Set.Make(String)
 
-let lines =
+let input =
   CCIO.(with_in "inputs/04.txt" read_lines_l)
   |> List.map (String.split_on_char ' ')
 
@@ -21,11 +21,8 @@ let anagrams lines =
   in
   List.map (List.map sort_chars) lines
 
-let solution =
-  CCFun.compose
-    count_valid
-    (Printf.printf "%d\n")
 
+let solve = CCFun.(count_valid %> Printf.printf "%d\n")
 
-let first = solution lines
-let second = solution (anagrams lines)
+let part_1 = input |> solve
+let part_2 = input |> anagrams |> solve

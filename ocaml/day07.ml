@@ -82,5 +82,5 @@ let nodes = get_nodes input
 let kids = get_kids input
 let root = StrSet.diff nodes kids |> StrSet.choose
 
-let first = root |> Printf.printf "%s\n"
-let second = find_correct_weight root 0 |> Printf.printf "%d\n"
+let part_1 = root |> Printf.printf "%s\n"
+let part_2 = find_correct_weight root 0 |> Printf.printf "%d\n"

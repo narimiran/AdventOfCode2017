@@ -69,8 +69,8 @@ let rec make_spiral grid p d =
     make_spiral (PointGrid.add np nv grid) np nd
 
 
-let first = find_manhattan puzzle |> Printf.printf "%d\n"
-let second =
+let part_1 = find_manhattan puzzle |> Printf.printf "%d\n"
+let part_2 =
   let p = (0, 0) in
   let grid = PointGrid.of_list [(p, 1)] in
   let d = Direction.Right in

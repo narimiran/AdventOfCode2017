@@ -1,10 +1,6 @@
 let numbers =
-  List.map
-    (CCFun.compose
-       (String.split_on_char '\t')
-       (List.map int_of_string))
-    CCIO.(with_in "inputs/02.txt" read_lines_l)
-
+  CCIO.(with_in "inputs/02.txt" read_lines_l)
+  |> List.map CCFun.(String.split_on_char '\t' %> List.map int_of_string)
 
 let diff row =
   let max_val = List.fold_left max min_int row in
@@ -14,8 +10,7 @@ let diff row =
 
 let rec find_divisors row =
   let are_divisible a b =
-    a mod b = 0 || b mod a = 0
-  in
+    a mod b = 0 || b mod a = 0 in
   let divide a b =
     if a mod b = 0 then a/b else b/a
   in
@@ -33,6 +28,6 @@ let solve ~part =
   |> List.fold_left (fun acc x -> func x + acc) 0
   |> Printf.printf "%d\n"
 
-
-let first = solve ~part:1
-let second = solve ~part:2
+let () =
+  solve ~part:1;
+  solve ~part:2
