@@ -13,18 +13,14 @@ first = find_manhattan(PUZZLE)
 
 
 
-
 grid = {(0, 0): 1}
 
-
-def neighbours(point):
-    x, y = point
-    return [(x+1, y), (x-1, y), (x, y+1), (x, y-1),
-            (x+1, y+1), (x-1, y-1), (x+1, y-1), (x-1, y+1)]
+neighbours = lambda x, y: [(x+1, y), (x, y+1), (x+1, y+1), (x-1, y-1),
+                           (x-1, y), (x, y-1), (x+1, y-1), (x-1, y+1)]
 
 
 def set_value(point):
-    grid[point] = sum(grid.get(neighbour, 0) for neighbour in neighbours(point))
+    grid[point] = sum(grid.get(neighbour, 0) for neighbour in neighbours(*point))
     return grid[point]
 
 
