@@ -5,8 +5,8 @@ import re
 with open('./inputs/20.txt') as f:
     instructions = f.readlines()
 
-def manhattan(particle_accelerations):
-    return sum(abs(r) for r in particle_accelerations)
+def magnitude(particle_accelerations):
+    return sum(r**2 for r in particle_accelerations)
 
 pattern = re.compile(r'p=<(-*\d+,-*\d+,-*\d+)>, v=<(-*\d+,-*\d+,-*\d+)>, a=<(-*\d+,-*\d+,-*\d+)>')
 particles = []
@@ -15,9 +15,9 @@ closest_particle = None
 
 for i, line in enumerate(instructions):
     particle = tuple(tuple(map(int, g.split(','))) for g in re.match(pattern, line).groups())
-    manhattan_acceleration = manhattan(particle[-1])
-    if manhattan_acceleration < smallest_acceleration:
-        smallest_acceleration = manhattan_acceleration
+    accel = magnitude(particle[-1])
+    if accel < smallest_acceleration:
+        smallest_acceleration = accel
         closest_particle = i
     particles.append(particle)
 

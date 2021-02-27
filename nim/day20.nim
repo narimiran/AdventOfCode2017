@@ -1,7 +1,7 @@
 import strutils, sequtils, tables, math
 
 
-const instructions = readFile("./inputs/20.txt").splitLines
+const instructions = readFile("./inputs/20.txt").strip.splitLines
 type
   Coord = tuple[x, y, z: float]
   Particle = tuple[p, v, a: Coord]
@@ -14,8 +14,8 @@ func parseLine(line: string): Particle =
   let pva = line.split(", ").map(extractNumbers)
   (pva[0], pva[1], pva[2])
 
-func manhattan(accel: Coord): float =
-  abs(accel.x) + abs(accel.y) + abs(accel.z)
+func magnitude(accel: Coord): float =
+  accel.x^2 + accel.y^2 + accel.z^2
 
 var
   particles: array[instructions.len, Particle]
@@ -25,7 +25,7 @@ var
 for i, line in instructions:
   let
     particle = line.parseLine()
-    ma = manhattan(particle.a)
+    ma = magnitude(particle.a)
   if ma < smallestAcceleration:
     smallestAcceleration = ma
     closestParticle = i

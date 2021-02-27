@@ -8,15 +8,16 @@ module Particle = struct
       a = { x = ax; y = ay; z = az };
     }
 
-  let manhattan c =
+  let magnitude c =
     let open CCFloat in
-    abs c.x + abs c.y + abs c.z
+    let sq x = x * x in
+    sq c.x + sq c.y + sq c.z
 
   let closest particles =
     let ix, _ =
       CCList.foldi
         (fun (ix, ac) i p ->
-           let accel = manhattan p.a in
+           let accel = magnitude p.a in
            if accel < ac then (i, accel) else (ix, ac))
         (-1, Float.max_float)
         particles
