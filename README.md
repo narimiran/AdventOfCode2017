@@ -7,8 +7,9 @@ All my Advent of Code repos:
 * [AoC 2017 in Nim, OCaml, Python](https://github.com/narimiran/AdventOfCode2017) (this repo)
 * [AoC 2018 in Nim, Python, Racket](https://github.com/narimiran/AdventOfCode2018)
 * [AoC 2019 in OCaml, Python](https://github.com/narimiran/AdventOfCode2019)
-* [AoC 2020 in Nim, one liner-y Python](https://github.com/narimiran/AdventOfCode2020)
-* [AoC 2021 in Python](https://github.com/narimiran/AdventOfCode2021)
+* [AoC 2020 in Nim, one liner-y Python, Racket](https://github.com/narimiran/AdventOfCode2020)
+* [AoC 2021 in Python, Racket](https://github.com/narimiran/AdventOfCode2021)
+* [AoC 2022 in Python, Clojure](https://github.com/narimiran/AdventOfCode2022)
 
 &nbsp;
 
@@ -19,7 +20,7 @@ My aim is to provide clean and readable, yet idiomatic, solutions in all three l
 If you have any comment/suggestion/advice, please let me know!
 
 Originally, I've solved all tasks in Nim and Python as they were released.
-OCaml solutions were added in Novemeber 2019 as a preparation for AoC 2019 (these were my first steps in OCaml).
+OCaml solutions were added in November 2019 as a preparation for AoC 2019 (these were my first steps in OCaml).
 
 
 Task                                                                                 | Nim solution               | OCaml solution             | Python solution             | Note
@@ -49,7 +50,7 @@ Task                                                                            
 [Day 23: Coprocessor Conflagration](http://adventofcode.com/2017/day/23)             | [day23.nim](nim/day23.nim) | [day23.ml](ocaml/day23.ml) | [day23.py](python/day23.py) |
 [Day 24: Electromagnetic Moat](http://adventofcode.com/2017/day/24)                  | [day24.nim](nim/day24.nim) | [day24.ml](ocaml/day24.ml) | [day24.py](python/day24.py) | BFS in Python. A recursive search in Nim and OCaml, optimized.
 [Day 25: The Halting Problem](http://adventofcode.com/2017/day/25)                   | [day25.nim](nim/day25.nim) | [day25.ml](ocaml/day25.ml) | [day25.py](python/day25.py) | Python version uses (default)dict. Nim version uses arrays, which are much faster than tables.
-**Total time**:                                                                      | 0.49 sec                   | 1.16 sec\*                 | 15.9 sec\*                  | \* OCaml: unoptimized [day21.ml](ocaml/day21.ml). Python: without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
+**Total time**:                                                                      | 0.49 sec                   | 1.01 sec\*                 | 16.1 sec\*                  | \* OCaml: unoptimized [day21.ml](ocaml/day21.ml). Python: without the brute-forced [day17.py](python/day17.py), and [day15.py](python/day15.py) was run in `pypy3`. For the detailed run times, see below.
 
 &nbsp;
 
@@ -57,41 +58,42 @@ Task                                                                            
 
 ## Run times
 
-* Nim version: 1.1.1 (devel)
-* OCaml version: 4.08.1+flambda
-* Python version: 3.7.4
-* CPU: AMD Ryzen 3700x @ 3.6 GHz (Linux 5.3)
+* Nim version: 1.6.6
+* OCaml version: 4.13.1
+* Python version: 3.8.2
+* CPU: AMD Ryzen 3700x @ 3.6 GHz (Linux 5.15)
 
 
 Times are in milliseconds, the reported results are the average of 20 runs.
 
 day |  nim | ocaml | python |
 ---:| ----:| -----:| ------:|
- 01 |  0.4 |   1.2 |   22.5 |
- 02 |  0.7 |   1.0 |   22.3 |
- 03 |  0.5 |   1.0 |   19.1 |
- 04 |  3.6 |   4.2 |   22.1 |
- 05 | 85.0 |  86.1 | 2547.6 |
- 06 |  3.3 |   5.6 |   53.9 |
- 07 |  3.2 |   6.1 |   33.5 |
- 08 |  2.0 |   2.1 |   19.6 |
- 09 |  0.7 |   2.9 |   24.2 |
- 10 |  0.8 |   2.1 |   33.0 |
- 11 |  1.3 |   1.8 |   32.6 |
- 12 |  2.9 |   3.3 |   26.5 |
- 13 |  1.7 |  30.4 |   28.8 |
- 14 | 14.3 |  45.6 |  521.6 |
- 15 |195.4 | 392.6 | 2074\* |
- 16 | 13.0 |  82.0 |  160.3 |
- 17 |  1.6 |   7.8 |    -\* |
- 18 |  1.1 |   7.5 |  108.0 |
- 19 |  0.9 |   1.4 |   33.0 |
- 20 | 16.1 |  31.2 | 1582.7 |
- 21 |  0.8 | 151\* |  212.4 |
- 22 | 61.2 | 150.8 | 3511.9 |
- 23 |  0.8 |   1.0 |   21.3 |
- 24 | 16.4 |  68.5 | 1332.3 |
- 25 | 61.6 |  68.3 | 3456.8 |
+ 01 |  0.3 |   0.8 |   13.3 |
+ 02 |  0.5 |   0.8 |   13.2 |
+ 03 |  0.4 |   0.7 |   13.6 |
+ 04 |  2.3 |   2.4 |   15.7 |
+ 05 | 69.0 |  63.8 | 2732.1 |
+ 06 |  2.4 |   3.6 |   32.6 |
+ 07 |  2.4 |   3.9 |   20.9 |
+ 08 |  1.2 |   1.5 |   14.5 |
+ 09 |  0.4 |   1.9 |   17.2 |
+ 10 |  0.5 |   1.4 |   24.7 |
+ 11 |  0.6 |   1.3 |   19.5 |
+ 12 |  1.8 |   2.3 |   16.7 |
+ 13 |  1.4 |  17.4 |   21.5 |
+ 14 |  8.8 |  32.3 |  566.2 |
+ 15 |195.4 | 383.2 | 2083\* |
+ 16 |  6.8 |  71.0 |  143.5 |
+ 17 |  0.9 |   4.8 |    -\* |
+ 18 |  0.7 |   4.6 |   88.8 |
+ 19 |  0.8 |   1.2 |   21.4 |
+ 20 |  9.2 |  18.2 | 1622.5 |
+ 21 |  0.5 | 145.0 |  197.1 |
+ 22 | 50.4 | 139.3 | 3555.9 |
+ 23 |  0.5 |   1.0 |   15.1 |
+ 24 | 10.8 |  52.1 | 1242.2 |
+ 25 | 48.8 |  52.3 | 3649.1 |
+
 
 OCaml Day21 was not optimized.  
 Python Day15 was run with `pypy3`, Python Day17 was brute-forced.
